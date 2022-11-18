@@ -37,18 +37,20 @@ class AppCoordinator: CoordinatorProtocol {
         guard let factory = factory else {
             return
         }
-        let tab1 = factory.makeModule(type: .feed) as? FeedViewController
-        let tab2 = factory.makeModule(type: .login) as? LoginViewController
-        let tab3 = factory.makeModule(type: .profile) as? ProfileViewController
-        let navTab3 = UINavigationController(rootViewController: tab3!)
-        let navTab1 = UINavigationController(rootViewController: tab1!)
-        let navTab2 = UINavigationController(rootViewController: tab2!)
+        let feed = factory.makeModule(type: .feed) as? FeedViewController
+        let login = factory.makeModule(type: .login) as? LoginViewController
+        let profile = factory.makeModule(type: .profile) as? ProfileViewController
+        let liked = factory.makeModule(type: .liked) as? LikedViewController
+        let navProfile = UINavigationController(rootViewController: profile!)
+        let navFeed = UINavigationController(rootViewController: feed!)
+        let navLogin = UINavigationController(rootViewController: login!)
+        let navLiked = UINavigationController(rootViewController: liked!)
         guard let controller = self.controller else {return}
         controller.tabBar.backgroundColor = .white
         if loginType {
-            controller.viewControllers = [navTab1, navTab3]
+            controller.viewControllers = [navFeed, navProfile, navLiked]
         } else {
-            controller.viewControllers = [navTab1, navTab2]
+            controller.viewControllers = [navFeed, navLogin, navLiked]
         }
         self.controller = controller
     }

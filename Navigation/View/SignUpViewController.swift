@@ -82,6 +82,7 @@ class SignUpViewController: UIViewController {
         self.view.backgroundColor = .white
         setupViews()
         setupConstraints()
+        loginTextField.keyboardType = .emailAddress
     }
     
     @objc func loginTextChanged(_ textField: UITextField) {

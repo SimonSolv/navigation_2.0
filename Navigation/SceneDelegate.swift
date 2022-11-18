@@ -31,19 +31,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate  {
         var isAuth = false
         let realm = try! Realm()
         let users = realm.objects(Credentials.self)
-        print(users.count)
-        if users.count == 1 {
-            if users.first?.isLoggedIn == true {
-                isAuth = true
-            }
-        }
-        if users.count > 1 {
-            for i in 0...users.count - 1 {
-                if users[i].isLoggedIn == true {
-                    isAuth = true
-                }
-            }
-        }
+        isAuth = users.contains { $0.isLoggedIn }
         window?.rootViewController = coordinator.start(authorised: isAuth)!
     }
     
@@ -52,7 +40,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate  {
         do {
             try? FirebaseAuth.Auth.auth().signOut()
             return
-            } catch {
+        } catch {
             print(error.localizedDescription)
         }
         

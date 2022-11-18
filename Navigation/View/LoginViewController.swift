@@ -184,6 +184,7 @@ class LoginViewController: UIViewController, Coordinated {
         users = realm.objects(Credentials.self)
         setupViews()
         setupConstraits()
+        loginTextField.keyboardType = .emailAddress
       //  googleSignInButton.addTarget(self, action: #selector(googleAuthLogin), for: .touchUpInside)
      //   signInLineButton.addTarget(self, action: #selector(signInButtonTapped), for: .touchUpInside)
 
@@ -342,7 +343,7 @@ extension LoginViewController {
 
         var password: String = ""
 
-        while password != passwordToUnlock { 
+        while password != passwordToUnlock {
             password = generateBruteForce(password, fromArray: ALLOWED_CHARACTERS)
 
         }
@@ -381,7 +382,7 @@ extension LoginViewController {
 
         return str
     }
-} 
+}
 
 //MARK: Login and Sign in logic
 extension LoginViewController {
@@ -414,8 +415,6 @@ extension LoginViewController {
     func loginButtonTapped() {
         print("TappingLogin")
         if self.loginTextField.text != "" && self.passwordTextField.text != "" {
-            print(self.loginTextField.text!)
-            print(self.passwordTextField.text!)
             inspector.checkCredentials(email: self.loginTextField.text!, password: self.passwordTextField.text!, iniciator: self, realm: true)
         } else {
             self.present(loginAlert(), animated: true, completion: nil)
