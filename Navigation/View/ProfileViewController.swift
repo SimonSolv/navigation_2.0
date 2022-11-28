@@ -3,6 +3,7 @@ import UIKit
 class ProfileViewController: UIViewController, PhotosTableViewCellDelegate, Coordinated {
     
     var coordinator: CoordinatorProtocol?
+    let coreManager = CoreDataManager.shared
 
     let tableView: UITableView = {
         var table = UITableView()
@@ -59,6 +60,17 @@ class ProfileViewController: UIViewController, PhotosTableViewCellDelegate, Coor
         guard segue.identifier == "Post" else { return }
         guard segue.destination is JokeViewController else { return }
     }
+    
+    
+    @objc func handleTap(_ sender: CustomJestureRecognizer){
+        let post = sender.post
+        guard post != nil else {
+            print ("Unexpected nil Post")
+            return
+        }
+        coreManager.addPost(post: post!)
+        print("Saving to Liked")
+    }
 
 }
 extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
@@ -82,12 +94,20 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier, for: indexPath) as? PostTableViewCell
-        cell?.post = PostStorage.tableModel[indexPath.section].body[indexPath.row - 1]
+        let cellPost = PostStorage.tableModel[indexPath.section].body[indexPath.row - 1]
+        let doubleTapp = CustomJestureRecognizer(target: self, action: #selector(ProfileViewController.handleTap(_:)))
+  //      doubleTapp.delegate = self
+        doubleTapp.numberOfTapsRequired = 2
+        doubleTapp.post = cellPost
+        cell?.addGestureRecognizer(doubleTapp)
+        cell?.post = cellPost
         return cell!
     }
 
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         return PostStorage.tableModel[section].footer
     }
+    
+    
     
 }

@@ -3,97 +3,57 @@ import UIKit
 import FirebaseAuth
 import RealmSwift
 
+enum AlertError: String {
+    case wrongEmail = "Email is not correct!"
+    case shortPassword = "Password should be at least 6 caracters!"
+    case wrongPassword = "Password is incorrect"
+    case userNotFound = "User not found"
+}
+
 class LoginInspector: LoginViewControllerDelegate {
     
     let realm = try! Realm()
     var users: Results<Credentials>?
     var isLoggedIn: Bool = true
     
-    let wrongEmailAlert: UIAlertController = {
-        let alertVC = UIAlertController(title: "Warning:", message: "Email is not correct!", preferredStyle: .alert )
-        let okAction = UIAlertAction(title: "Ok", style: .default, handler: {(_: UIAlertAction!) in
-        })
-        alertVC.addAction(okAction)
-        return alertVC
-    }()
-    
-    let shortPasswordAlert: UIAlertController = {
-        let alertVC = UIAlertController(title: "Warning:", message: "Password should be at least 6 caracters!", preferredStyle: .alert )
-        let okAction = UIAlertAction(title: "Ok", style: .default, handler: {(_: UIAlertAction!) in
-        })
-        alertVC.addAction(okAction)
-        return alertVC
-    }()
-    
-    let wrongPasswordAlert: UIAlertController = {
-        let alertVC = UIAlertController(title: "Warning:", message: "Password is incorrect", preferredStyle: .alert )
-        let okAction = UIAlertAction(title: "Ok", style: .default, handler: {(_: UIAlertAction!) in
-        })
-        alertVC.addAction(okAction)
-        return alertVC
-    }()
-    
-    let userNotFoundAlert: UIAlertController = {
-        let alertVC = UIAlertController(title: "Warning:", message: "User not found", preferredStyle: .alert )
-        let okAction = UIAlertAction(title: "Ok", style: .default, handler: {(_: UIAlertAction!) in
-        })
-        alertVC.addAction(okAction)
-        return alertVC
-    }()
     
     func checkCredentials(email: String, password: String, iniciator: LoginViewController, realm: Bool) {
         switch realm {
         case true:
+            self.isLoggedIn = false
             if isValidEmail(email) != true {
-                iniciator.present(wrongEmailAlert, animated: true)
+                iniciator.present(CustomWarnAlert(message: AlertError.wrongEmail.rawValue, actionHandler: nil),
+                    animated: true)
                 return
             } else if password.count < 6 {
-                iniciator.present(shortPasswordAlert, animated: true)
+                iniciator.present(CustomWarnAlert(message: AlertError.shortPassword.rawValue, actionHandler: nil), animated: true)
                 return
             } else {
-                print("Realm")
                 users = self.realm.objects(Credentials.self)
-                if users?.count == 0 {
-                    iniciator.present(userNotFoundAlert, animated: true)
-                } else if users?.count == 1 {
-                    if users!.first?.login == email {
-                        if users!.first?.password == password {
-                            self.isLoggedIn = true
-                            if let user = users!.first{
-                                try! self.realm.write {
-                                    user.isLoggedIn = self.isLoggedIn
-                                }
-                            }
-                            iniciator.coordinator?.eventAction(event: .loginSuccess, iniciator: iniciator)
-                            break
-                        } else {
-                            iniciator.present(wrongPasswordAlert, animated: true)
-                            break
+                guard let users else {
+                    print("Error: Cannot get users")
+                    return
+                }
+                guard users.count > 0 else {
+                    iniciator.present(CustomWarnAlert(message: AlertError.userNotFound.rawValue, actionHandler: nil), animated: true)
+                    return
+                }
+                for user in users {
+                    if user.login == email && user.password == password {
+                        self.isLoggedIn = true
+                        try! self.realm.write {
+                            user.isLoggedIn = self.isLoggedIn
                         }
+                        iniciator.coordinator?.eventAction(event: .loginSuccess, iniciator: iniciator)
+                        break
                     }
-                } else if users!.count > 1 {
-                    for i in 0...users!.count - 1 {
-                        if users?[i].login == email {
-                            if users?[i].password == password {
-                                self.isLoggedIn = true
-                                if let user = users?[i] {
-                                    try! self.realm.write {
-                                        user.isLoggedIn = self.isLoggedIn
-                                    }
-                                }
-                                iniciator.coordinator?.eventAction(event: .loginSuccess, iniciator: iniciator)
-                                break
-                            } else {
-                                iniciator.present(wrongPasswordAlert, animated: true)
-                                break
-                            }
-                        } else {
-                            self.isLoggedIn = false
-                        }
+                    if user.login == email && user.password != password {
+                        iniciator.present(CustomWarnAlert(message: AlertError.wrongPassword.rawValue, actionHandler: nil), animated: true)
+                        break
                     }
                 }
                 if self.isLoggedIn == false {
-                    iniciator.present(userNotFoundAlert, animated: true)
+                    iniciator.present(CustomWarnAlert(message: AlertError.userNotFound.rawValue, actionHandler: nil), animated: true)
                 }
             }
             
@@ -136,10 +96,10 @@ class LoginInspector: LoginViewControllerDelegate {
         switch realm {
         case true:
             if isValidEmail(login) != true {
-                iniciator.present(wrongEmailAlert, animated: true)
+                iniciator.present(CustomWarnAlert(message: AlertError.wrongEmail.rawValue, actionHandler: nil), animated: true)
                 return
             } else if password.count < 6 {
-                iniciator.present(shortPasswordAlert, animated: true)
+                iniciator.present(CustomWarnAlert(message: AlertError.shortPassword.rawValue, actionHandler: nil), animated: true)
                 return
             } else {
                 var userCredentials = Credentials()

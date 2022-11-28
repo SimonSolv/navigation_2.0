@@ -18,6 +18,30 @@ final class CustomButton: UIButton {
     }
 }
 
+let wrongEmailAlert: UIAlertController = {
+    let alertVC = UIAlertController(title: "Warning:", message: "Email is not correct!", preferredStyle: .alert )
+    let okAction = UIAlertAction(title: "Ok", style: .default, handler: {(_: UIAlertAction!) in
+    })
+    alertVC.addAction(okAction)
+    return alertVC
+}()
+
+final class CustomWarnAlert: UIAlertController {
+    
+    init(message: String, actionHandler: ((UIAlertAction) -> Void)?) {
+       // self.preferredStyle = .alert
+        super.init(nibName: nil, bundle: nil)
+        self.title = "Warning"
+        self.message = message
+        let action = UIAlertAction(title: "Ok", style: .default, handler: actionHandler)
+        self.addAction(action)
+    }
+    required init?(coder: NSCoder) {
+        nil
+    }
+
+}
+
 extension CustomButton {
     enum Style {
         case login
@@ -78,4 +102,8 @@ extension UITextField {
             self.leftViewMode = .always
         }
     }
+}
+
+class CustomJestureRecognizer: UITapGestureRecognizer {
+    var post: PostBody?
 }

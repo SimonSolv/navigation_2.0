@@ -8,11 +8,10 @@ class PostTableViewCell: UITableViewCell {
     lazy var sourceImage: UIImage? = nil
     var post: PostBody? {
         didSet {
-            sourceImage = post?.image
-//            imageColoring()
-            postImageView.image = post?.image
+            sourceImage = UIImage(named: post!.imageName)
+            postImageView.image = UIImage(named: post!.imageName)
             postTitle.text = post?.title
-            postDescription.text = post?.description
+            postDescription.text = post?.bodyText
             postViews.text = "Views: \(post?.views ?? 0)"
             postLikes.text = "Likes: \(post?.likes ?? 0)"
         }
