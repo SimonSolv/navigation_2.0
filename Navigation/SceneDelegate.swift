@@ -1,7 +1,7 @@
 import UIKit
 import FirebaseAuth
 import FirebaseCore
-import RealmSwift
+//import RealmSwift
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate  {
 
@@ -28,10 +28,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate  {
         let factory = ModuleFactory()
         coordinator.factory = factory
         factory.coordinator = coordinator
-        var isAuth = false
-        let realm = try! Realm()
-        let users = realm.objects(Credentials.self)
-        isAuth = users.contains { $0.isLoggedIn }
+        var isAuth = true
+//        let realm = try! Realm()
+//        let users = realm.objects(Credentials.self)
+//        isAuth = users.contains { $0.isLoggedIn }
         window?.rootViewController = coordinator.start(authorised: isAuth)!
     }
     

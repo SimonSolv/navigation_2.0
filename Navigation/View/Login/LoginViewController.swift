@@ -2,7 +2,7 @@ import SnapKit
 import UIKit
 import Firebase
 import GoogleSignIn
-import RealmSwift
+//import RealmSwift
 
 
 
@@ -18,8 +18,8 @@ class LoginViewController: UIViewController, Coordinated {
     private var userPassword: String?
     lazy var contentView = UIScrollView()
     var brudPass = ""
-    let realm = try! Realm()
-    var users: Results<Credentials>?
+//    let realm = try! Realm()
+//    var users: Results<Credentials>?
     let handle = Auth.auth().addStateDidChangeListener { auth, user in
             // ...
     }
@@ -97,6 +97,8 @@ class LoginViewController: UIViewController, Coordinated {
         return label
     }()
 
+    //MARK: - Functions
+    
     func unvealdPassword(password: String) {
         self.passwordTextField.isSecureTextEntry = false
         self.passwordTextField.text = password
@@ -181,7 +183,7 @@ class LoginViewController: UIViewController, Coordinated {
 //MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        users = realm.objects(Credentials.self)
+//        users = realm.objects(Credentials.self)
         setupViews()
         setupConstraits()
         loginTextField.keyboardType = .emailAddress
@@ -388,21 +390,21 @@ extension LoginViewController {
 extension LoginViewController {
     
     @objc func googleAuthLogin() {
-        let googleConfig = GIDConfiguration(clientID: "453388259695-17omfcqm8fr926fcehguloregfpm1rni.apps.googleusercontent.com")
-        self.googleSignIn.signIn(with: googleConfig, presenting: self) { user, error in
-            if error == nil {
-                guard let user = user else {
-                    print("Uh oh. The user cancelled the Google login.")
-                    return
-                }
-                self.myUser.id = user.userID ?? ""
-                self.myUser.idToken = user.authentication.idToken ?? ""
-                self.myUser.firstName = user.profile?.givenName ?? ""
-                self.myUser.lastName = user.profile?.familyName ?? ""
-                self.myUser.email = user.profile?.email ?? ""
-                self.myUser.googleProfilePicURL = user.profile?.imageURL(withDimension: 150)?.absoluteString ?? ""
-            }
-        }
+//        let googleConfig = GIDConfiguration(clientID: "453388259695-17omfcqm8fr926fcehguloregfpm1rni.apps.googleusercontent.com")
+//        self.googleSignIn.signIn(with: googleConfig, presenting: self) { user, error in
+//            if error == nil {
+//                guard let user = user else {
+//                    print("Uh oh. The user cancelled the Google login.")
+//                    return
+//                }
+//                self.myUser.id = user.userID ?? ""
+//                self.myUser.idToken = user.authentication.idToken ?? ""
+//                self.myUser.firstName = user.profile?.givenName ?? ""
+//                self.myUser.lastName = user.profile?.familyName ?? ""
+//                self.myUser.email = user.profile?.email ?? ""
+//                self.myUser.googleProfilePicURL = user.profile?.imageURL(withDimension: 150)?.absoluteString ?? ""
+//            }
+//        }
     }
     
     func signInButtonTapped() {

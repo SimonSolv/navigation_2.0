@@ -74,7 +74,7 @@ class ProfileHeaderView: UIView {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tap))
 //        addGestureRecognizer(tapGesture)
         statusLabel.text = status
-        backgroundColor = .lightGray
+        backgroundColor = .systemGray6
         avatarImageView.addGestureRecognizer(tapGesture)
         
         setupViews()
