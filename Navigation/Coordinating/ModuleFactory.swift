@@ -36,6 +36,14 @@ final class ModuleFactory: FabricProtocol {
                 return controller
             }()
             return likedController
+        case .map:
+            let mapController: MapViewController = {
+                let controller = MapViewController()
+                controller.tabBarItem = UITabBarItem(title: "Map", image: UIImage(systemName: "map"), selectedImage: UIImage(systemName: "map.fill"))
+                controller.coordinator = self.coordinator
+                return controller
+            }()
+            return mapController
         }
     }
 }
@@ -50,5 +58,6 @@ enum ModuleType {
     case profile
     case login
     case liked
+    case map
     
 }

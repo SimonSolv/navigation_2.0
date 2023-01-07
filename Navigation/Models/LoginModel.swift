@@ -1,6 +1,6 @@
 import Foundation
 import UIKit
-import RealmSwift
+//import RealmSwift
 
 extension String {
     var digits:      String { return "0123456789" }
@@ -52,9 +52,9 @@ protocol LoginViewControllerDelegate: AnyObject, CheckerServiceProtocol {
     func checkPswd (login: String, password: String) -> Bool
 }
 
-class Credentials: Object  {
-    @Persisted var login: String
-    @Persisted var password: String
-    @Persisted var isLoggedIn: Bool
-    @Persisted(primaryKey: true) var credentialId: ObjectId
-}
+//class Credentials: Object  {
+//    @Persisted var login: String
+//    @Persisted var password: String
+//    @Persisted var isLoggedIn: Bool
+//    @Persisted(primaryKey: true) var credentialId: ObjectId
+//}
