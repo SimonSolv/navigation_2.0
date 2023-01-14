@@ -48,7 +48,7 @@
 		CED48DEA2909AE43004A563C /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED48DE92909AE43004A563C /* SignUpViewController.swift */; };
 		CED5A04927F7704500F3CD26 /* FeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED5A04827F7704500F3CD26 /* FeedModel.swift */; };
 		CEFE947A29668D67005325D4 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFE947929668D67005325D4 /* MapViewController.swift */; };
-		CEFE947C2966E248005325D4 /* MapAnnotations.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFE947B2966E248005325D4 /* MapAnnotations.swift */; };
+		CEFE947C2966E248005325D4 /* AnnotationForMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFE947B2966E248005325D4 /* AnnotationForMap.swift */; };
 		CEFE947E29685EF8005325D4 /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFE947D29685EF8005325D4 /* MapModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -97,7 +97,7 @@
 		CED48DE92909AE43004A563C /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		CED5A04827F7704500F3CD26 /* FeedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModel.swift; sourceTree = "<group>"; };
 		CEFE947929668D67005325D4 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		CEFE947B2966E248005325D4 /* MapAnnotations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapAnnotations.swift; path = ../../../../../../../Applications/MapAnnotations.swift; sourceTree = "<group>"; };
+		CEFE947B2966E248005325D4 /* AnnotationForMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AnnotationForMap.swift; path = ../../../../../../../Applications/AnnotationForMap.swift; sourceTree = "<group>"; };
 		CEFE947D29685EF8005325D4 /* MapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -329,7 +329,7 @@
 			isa = PBXGroup;
 			children = (
 				CECEF9D928E0C06D00F87248 /* CustomUIExtentions.swift */,
-				CEFE947B2966E248005325D4 /* MapAnnotations.swift */,
+				CEFE947B2966E248005325D4 /* AnnotationForMap.swift */,
 			);
 			path = CustomUI;
 			sourceTree = "<group>";
@@ -512,7 +512,7 @@
 				CECEF9D528E0BE7A00F87248 /* AppCoordinator.swift in Sources */,
 				CE8D6E6326A9B1AE00A25380 /* ProfileViewController.swift in Sources */,
 				CE1687BB292E8FFD0088F724 /* NetworkError.swift in Sources */,
-				CEFE947C2966E248005325D4 /* MapAnnotations.swift in Sources */,
+				CEFE947C2966E248005325D4 /* AnnotationForMap.swift in Sources */,
 				CE524CFF26FE47E3009C182B /* PhotoCollectionViewCell.swift in Sources */,
 				CEFE947A29668D67005325D4 /* MapViewController.swift in Sources */,
 				CE46997328F9C307006CCD35 /* NetworkService.swift in Sources */,

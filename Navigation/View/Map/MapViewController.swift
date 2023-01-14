@@ -117,7 +117,6 @@ class MapViewController: UIViewController, Coordinated {
                                                selector: #selector(self.showRoadNotifivation(notification:)),
                                                name: Notification.Name("showRoad"),
                                                object: nil)
-        
     }
 
     override func viewDidLoad() {
@@ -186,7 +185,7 @@ class MapViewController: UIViewController, Coordinated {
     @objc func showRoadNotifivation(notification: NSNotification) {
         let allAnnotations = self.mapView.annotations
         self.mapView.removeAnnotations(allAnnotations)
-        createPath(sourceLocation: pointFrom!, destinationLocation: pointTo!)
+        createPath(pickupCoordinate: pointFrom!, destinationCoordinate: pointTo!)
     }
     
     @objc private func findUserLocation() {
@@ -200,11 +199,12 @@ class MapViewController: UIViewController, Coordinated {
             animated: true
         )
 
-        let currentAnnotation = MapAnnotation(title: "You are here", coordinate: self.currentLocation!.coordinate , info: "This is your current location")
+        let currentAnnotation = AnnotationForMap(title: "You are here", coordinate: self.currentLocation!.coordinate , info: "This is your current location")
         mapView.addAnnotation(currentAnnotation)
     }
-
 }
+
+//MARK: - LocationManager
 
 extension MapViewController: CLLocationManagerDelegate {
     
@@ -245,7 +245,7 @@ extension MapViewController: CLLocationManagerDelegate {
                 self.currentRegion!,
                 animated: true
             )
-            let currentAnnotation = MapAnnotation(title: "You are here", coordinate: self.currentLocation!.coordinate , info: "This is your current location")
+            let currentAnnotation = AnnotationForMap(title: "You are here", coordinate: self.currentLocation!.coordinate , info: "This is your current location")
             mapView.addAnnotation(currentAnnotation)
         }
     }
@@ -258,6 +258,8 @@ extension MapViewController: CLLocationManagerDelegate {
     }
 }
 
+//MARK: -Map Functions
+
 extension MapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
@@ -267,14 +269,17 @@ extension MapViewController: MKMapViewDelegate {
         return rendere
     }
     
-    func createPath(sourceLocation : CLLocationCoordinate2D, destinationLocation : CLLocationCoordinate2D) {
-        let sourcePlaceMark = MKPlacemark(coordinate: sourceLocation, addressDictionary: nil)
-        let destinationPlaceMark = MKPlacemark(coordinate: destinationLocation, addressDictionary: nil)
-        
-        
+    
+    /// Function to create line and two dots between first point and second point
+    /// - Parameters:
+    ///   - pickupCoordinate: start point on the map route
+    ///   - destinationCoordinate: finish point on the map
+    func createPath(pickupCoordinate : CLLocationCoordinate2D, destinationCoordinate : CLLocationCoordinate2D) {
+        let sourcePlaceMark = MKPlacemark(coordinate: pickupCoordinate, addressDictionary: nil)
+        let destinationPlaceMark = MKPlacemark(coordinate: destinationCoordinate, addressDictionary: nil)
+     
         let sourceMapItem = MKMapItem(placemark: sourcePlaceMark)
         let destinationItem = MKMapItem(placemark: destinationPlaceMark)
-        
         
         let sourceAnotation = MKPointAnnotation()
         sourceAnotation.title = "\(self.searchFieldFrom ?? "Start")"
@@ -299,7 +304,6 @@ extension MapViewController: MKMapViewDelegate {
         
         let direction = MKDirections(request: directionRequest)
         
-        
         direction.calculate { (response, error) in
             guard let response = response else {
                 if let error = error {
@@ -317,6 +321,11 @@ extension MapViewController: MKMapViewDelegate {
         }
     }
     
+    //Currently doesn't work:
+    /// Function to create line and two dots between first point and second point
+    /// - Parameters:
+    ///   - pickupCoordinate: start point on the map route
+    ///   - destinationCoordinate: finish point on the map
     func showRouteOnMap(pickupCoordinate: CLLocationCoordinate2D, destinationCoordinate: CLLocationCoordinate2D) {
 
             let request = MKDirections.Request()
@@ -344,6 +353,8 @@ extension MapViewController: MKMapViewDelegate {
         }
     
 }
+
+//MARK: -Ligic for UI
 
 extension MapViewController {
     
@@ -433,14 +444,13 @@ extension MapViewController {
     }
     
     private func showRoute() {
-        
-        
+    
         if pointFrom != nil {
             if pointTo != nil {
                 DispatchQueue.main.async {
                     
-                    let fromAnnotation = MapAnnotation(title: self.fromSearchField.text ?? "You are here", coordinate: self.pointFrom! , info: "Begin route")
-                    let toAnnotation = MapAnnotation(title: self.toSearchField.text ?? "Finish route", coordinate: self.pointTo! , info: "End route")
+                    let fromAnnotation = AnnotationForMap(title: self.fromSearchField.text ?? "You are here", coordinate: self.pointFrom! , info: "Begin route")
+                    let toAnnotation = AnnotationForMap(title: self.toSearchField.text ?? "Finish route", coordinate: self.pointTo! , info: "End route")
                     self.mapView.addAnnotation(fromAnnotation)
                     self.mapView.addAnnotation(toAnnotation)
 //                    self.mapView.setVisibleMapRect(route.polyline.boundingMapRect, edgePadding: UIEdgeInsets.init(top: 80.0, left: 20.0, bottom: 100.0, right: 20.0), animated: true)

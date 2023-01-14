@@ -29,28 +29,6 @@ struct Article: Codable {
     var content: String?
 }
 
-// https://newsapi.org/v2/top-headlines?country=ru&apiKey=4d3913c1ba72456ba01a30bd96e6c741
-
-/*"status": "ok",
-  "totalResults": 30,
-  "articles": [
-    {
-      "source": {
-        "id": null,
-        "name": "Sport-express.ru"
-      },
-      "author": "Андрей Кузичев",
-      "title": "Еще одна сенсация на ЧМ-2022: японцы из бундеслиги нокаутировали Германию! - Спорт-Экспресс",
-      "description": "Турнир в Катаре точно войдет в историю.",
-      "url": "https://www.sport-express.ru/football/world/2022/reviews/germaniya-yaponiya-1-2-obzor-matcha-pervogo-tura-gruppovogo-etapa-chm-2022-23-noyabrya-2022-goda-2002122/",
-      "urlToImage": "https://ss.sport-express.ru/userfiles/materials/183/1839303/large.jpg",
-      "publishedAt": "2022-11-23T15:35:02Z",
-      "content": ".   .       . ,   , , ,  , .\r\n      « ».     (5:2).        .   - ,     .\r\n  ,     ? , , , , , ...         ,   18 . , ,    ,   ,   «», .\r\n , , .   ,     .   ,    ,  .        -2014 .\r\n  \r\n  ,     .   ,… [+354 chars]"
-    },
-
-*/
-
-
 struct ImageSet {
     let rowIndex: Int
     let image: UIImage
