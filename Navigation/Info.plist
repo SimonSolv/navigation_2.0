@@ -38,6 +38,12 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Getting ypur location to find nearest pub</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Getting your location to track you all the time</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Get location to use in my purpose</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

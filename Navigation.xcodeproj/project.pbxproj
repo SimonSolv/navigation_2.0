@@ -12,6 +12,8 @@
 		CE1687B12926A7230088F724 /* LikedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1687B02926A7230088F724 /* LikedViewController.swift */; };
 		CE1687B42926ABD30088F724 /* Navigation.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE1687B22926ABD20088F724 /* Navigation.xcdatamodeld */; };
 		CE1687B62926AC4D0088F724 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1687B52926AC4D0088F724 /* CoreDataManager.swift */; };
+		CE1687B9292E8F030088F724 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1687B8292E8F030088F724 /* NetworkManager.swift */; };
+		CE1687BB292E8FFD0088F724 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1687BA292E8FFD0088F724 /* NetworkError.swift */; };
 		CE46997328F9C307006CCD35 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46997228F9C307006CCD35 /* NetworkService.swift */; };
 		CE524CFC26FCFC6C009C182B /* PhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE524CFB26FCFC6C009C182B /* PhotosTableViewCell.swift */; };
 		CE524CFF26FE47E3009C182B /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE524CFE26FE47E3009C182B /* PhotoCollectionViewCell.swift */; };
@@ -45,6 +47,9 @@
 		CED2D0C426E9212700ED0387 /* ProfileTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED2D0C326E9212700ED0387 /* ProfileTableHeaderView.swift */; };
 		CED48DEA2909AE43004A563C /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED48DE92909AE43004A563C /* SignUpViewController.swift */; };
 		CED5A04927F7704500F3CD26 /* FeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED5A04827F7704500F3CD26 /* FeedModel.swift */; };
+		CEFE947A29668D67005325D4 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFE947929668D67005325D4 /* MapViewController.swift */; };
+		CEFE947C2966E248005325D4 /* AnnotationForMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFE947B2966E248005325D4 /* AnnotationForMap.swift */; };
+		CEFE947E29685EF8005325D4 /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFE947D29685EF8005325D4 /* MapModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +60,8 @@
 		CE1687B02926A7230088F724 /* LikedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedViewController.swift; sourceTree = "<group>"; };
 		CE1687B32926ABD30088F724 /* Navigation.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Navigation.xcdatamodel; sourceTree = "<group>"; };
 		CE1687B52926AC4D0088F724 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		CE1687B8292E8F030088F724 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		CE1687BA292E8FFD0088F724 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		CE46997228F9C307006CCD35 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		CE524CFB26FCFC6C009C182B /* PhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTableViewCell.swift; sourceTree = "<group>"; };
 		CE524CFE26FE47E3009C182B /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -89,6 +96,9 @@
 		CED2D0C326E9212700ED0387 /* ProfileTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableHeaderView.swift; sourceTree = "<group>"; };
 		CED48DE92909AE43004A563C /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		CED5A04827F7704500F3CD26 /* FeedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModel.swift; sourceTree = "<group>"; };
+		CEFE947929668D67005325D4 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		CEFE947B2966E248005325D4 /* AnnotationForMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AnnotationForMap.swift; path = ../../../../../../../Applications/AnnotationForMap.swift; sourceTree = "<group>"; };
+		CEFE947D29685EF8005325D4 /* MapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +131,113 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CE1687B7292E8EEE0088F724 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				CE1687B8292E8F030088F724 /* NetworkManager.swift */,
+				CE1687BA292E8FFD0088F724 /* NetworkError.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		CE1687BC292E92680088F724 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CECEF9E928E0C23600F87248 /* LoginModel.swift */,
+				CECEF9CE28E0BE0E00F87248 /* ProfileModel.swift */,
+				CE974C8928F5D5CD00E343E5 /* ChuckJokesModel.swift */,
+				CED5A04827F7704500F3CD26 /* FeedModel.swift */,
+				CEFE947D29685EF8005325D4 /* MapModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CE1687BD292E929A0088F724 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				CE1687B52926AC4D0088F724 /* CoreDataManager.swift */,
+				CE1687B22926ABD20088F724 /* Navigation.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		CE1687BE292E92C50088F724 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				CE8D6E2226A309F900A25380 /* FeedViewController.swift */,
+				CE8D6E2826A30EFD00A25380 /* JokeViewController.swift */,
+				CE974C8D28F5EB1F00E343E5 /* SearchJokeViewController.swift */,
+				CE974C8F28F5F0E000E343E5 /* JokeTableViewCell.swift */,
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
+		CE1687BF292E92CD0088F724 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				CE8D6E6226A9B1AE00A25380 /* ProfileViewController.swift */,
+				CE1687C4292E940C0088F724 /* Header */,
+				CE1687C3292E93DA0088F724 /* Cells */,
+				CE1687C5292E94270088F724 /* Gallery */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		CE1687C0292E93180088F724 /* LikedPosts */ = {
+			isa = PBXGroup;
+			children = (
+				CE1687B02926A7230088F724 /* LikedViewController.swift */,
+			);
+			path = LikedPosts;
+			sourceTree = "<group>";
+		};
+		CE1687C1292E933F0088F724 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				CED48DE92909AE43004A563C /* SignUpViewController.swift */,
+				CECEF9DF28E0C07D00F87248 /* LoginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		CE1687C2292E93730088F724 /* Resourses */ = {
+			isa = PBXGroup;
+			children = (
+				CE8D6E1726A3069900A25380 /* LaunchScreen.storyboard */,
+				CE8D6E1526A3069900A25380 /* Assets.xcassets */,
+				CE1687AE2923F61E0088F724 /* GoogleService-Info.plist */,
+			);
+			path = Resourses;
+			sourceTree = "<group>";
+		};
+		CE1687C3292E93DA0088F724 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				CE524CFB26FCFC6C009C182B /* PhotosTableViewCell.swift */,
+				CE524CFE26FE47E3009C182B /* PhotoCollectionViewCell.swift */,
+				CED2D0BC26E532F600ED0387 /* PostTableViewCell.swift */,
+				CECEF9E528E0C08900F87248 /* GalleryCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		CE1687C4292E940C0088F724 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				CE8D6E5F26A9B12600A25380 /* ProfileHeaderView.swift */,
+				CED2D0C326E9212700ED0387 /* ProfileTableHeaderView.swift */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		CE1687C5292E94270088F724 /* Gallery */ = {
+			isa = PBXGroup;
+			children = (
+				CECEF9E628E0C08900F87248 /* GalleryViewController.swift */,
+			);
+			path = Gallery;
+			sourceTree = "<group>";
+		};
 		CE545B4C28E3564C0027C88A /* Coordinating */ = {
 			isa = PBXGroup;
 			children = (
@@ -142,23 +259,13 @@
 		CE545B4E28E356830027C88A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CEFE947829668D4D005325D4 /* Map */,
+				CE1687C1292E933F0088F724 /* Login */,
+				CE1687C0292E93180088F724 /* LikedPosts */,
+				CE1687BF292E92CD0088F724 /* Profile */,
+				CE1687BE292E92C50088F724 /* Feed */,
 				CE8D6E2F26A464E100A25380 /* InfoViewController.swift */,
-				CED48DE92909AE43004A563C /* SignUpViewController.swift */,
-				CE8D6E2226A309F900A25380 /* FeedViewController.swift */,
-				CECEF9DF28E0C07D00F87248 /* LoginViewController.swift */,
-				CECEF9E528E0C08900F87248 /* GalleryCollectionViewCell.swift */,
-				CECEF9E628E0C08900F87248 /* GalleryViewController.swift */,
-				CE8D6E5F26A9B12600A25380 /* ProfileHeaderView.swift */,
-				CE8D6E6226A9B1AE00A25380 /* ProfileViewController.swift */,
-				CED2D0BC26E532F600ED0387 /* PostTableViewCell.swift */,
-				CED2D0C326E9212700ED0387 /* ProfileTableHeaderView.swift */,
-				CE524CFB26FCFC6C009C182B /* PhotosTableViewCell.swift */,
-				CE524CFE26FE47E3009C182B /* PhotoCollectionViewCell.swift */,
-				CE8D6E2826A30EFD00A25380 /* JokeViewController.swift */,
-				CE974C8D28F5EB1F00E343E5 /* SearchJokeViewController.swift */,
-				CE974C8F28F5F0E000E343E5 /* JokeTableViewCell.swift */,
 				CE9DEEF72901CF3C00BA75D6 /* NameTableViewCell.swift */,
-				CE1687B02926A7230088F724 /* LikedViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -175,10 +282,6 @@
 		CE545B5028E356AF0027C88A /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				CECEF9CE28E0BE0E00F87248 /* ProfileModel.swift */,
-				CE974C8928F5D5CD00E343E5 /* ChuckJokesModel.swift */,
-				CECEF9E928E0C23600F87248 /* LoginModel.swift */,
-				CED5A04827F7704500F3CD26 /* FeedModel.swift */,
 				CE46997228F9C307006CCD35 /* NetworkService.swift */,
 			);
 			path = ViewModel;
@@ -205,20 +308,19 @@
 		CE8D6E0B26A3069000A25380 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
-				CE8D6E0E26A3069000A25380 /* SceneDelegate.swift */,
+				CE8D6E1A26A3069900A25380 /* Info.plist */,
 				CE8D6E0C26A3069000A25380 /* AppDelegate.swift */,
-				CE1687B52926AC4D0088F724 /* CoreDataManager.swift */,
+				CE8D6E0E26A3069000A25380 /* SceneDelegate.swift */,
+				CE1687BD292E929A0088F724 /* CoreData */,
+				CE1687BC292E92680088F724 /* Models */,
+				CE545B4D28E356640027C88A /* Protocols */,
+				CE1687B7292E8EEE0088F724 /* Network */,
 				CE545B5028E356AF0027C88A /* ViewModel */,
 				CE545B4F28E356A00027C88A /* Module */,
 				CE545B4E28E356830027C88A /* View */,
-				CE545B4D28E356640027C88A /* Protocols */,
 				CE545B4C28E3564C0027C88A /* Coordinating */,
 				CECEF9D828E0C06D00F87248 /* CustomUI */,
-				CE8D6E1526A3069900A25380 /* Assets.xcassets */,
-				CE8D6E1726A3069900A25380 /* LaunchScreen.storyboard */,
-				CE1687AE2923F61E0088F724 /* GoogleService-Info.plist */,
-				CE8D6E1A26A3069900A25380 /* Info.plist */,
-				CE1687B22926ABD20088F724 /* Navigation.xcdatamodeld */,
+				CE1687C2292E93730088F724 /* Resourses */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -227,8 +329,17 @@
 			isa = PBXGroup;
 			children = (
 				CECEF9D928E0C06D00F87248 /* CustomUIExtentions.swift */,
+				CEFE947B2966E248005325D4 /* AnnotationForMap.swift */,
 			);
 			path = CustomUI;
+			sourceTree = "<group>";
+		};
+		CEFE947829668D4D005325D4 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				CEFE947929668D67005325D4 /* MapViewController.swift */,
+			);
+			path = Map;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -376,10 +487,12 @@
 				CECEF9E028E0C07D00F87248 /* Checker.swift in Sources */,
 				CE8D6E2926A30EFD00A25380 /* JokeViewController.swift in Sources */,
 				CE974C8E28F5EB1F00E343E5 /* SearchJokeViewController.swift in Sources */,
+				CEFE947E29685EF8005325D4 /* MapModel.swift in Sources */,
 				CE974C9028F5F0E000E343E5 /* JokeTableViewCell.swift in Sources */,
 				CED5A04927F7704500F3CD26 /* FeedModel.swift in Sources */,
 				CE8D6E0D26A3069000A25380 /* AppDelegate.swift in Sources */,
 				CECEF9DA28E0C06D00F87248 /* CustomUIExtentions.swift in Sources */,
+				CE1687B9292E8F030088F724 /* NetworkManager.swift in Sources */,
 				CE8D6E3026A464E100A25380 /* InfoViewController.swift in Sources */,
 				CECEF9E728E0C08900F87248 /* GalleryCollectionViewCell.swift in Sources */,
 				CE974C8A28F5D5CD00E343E5 /* ChuckJokesModel.swift in Sources */,
@@ -398,7 +511,10 @@
 				CED48DEA2909AE43004A563C /* SignUpViewController.swift in Sources */,
 				CECEF9D528E0BE7A00F87248 /* AppCoordinator.swift in Sources */,
 				CE8D6E6326A9B1AE00A25380 /* ProfileViewController.swift in Sources */,
+				CE1687BB292E8FFD0088F724 /* NetworkError.swift in Sources */,
+				CEFE947C2966E248005325D4 /* AnnotationForMap.swift in Sources */,
 				CE524CFF26FE47E3009C182B /* PhotoCollectionViewCell.swift in Sources */,
+				CEFE947A29668D67005325D4 /* MapViewController.swift in Sources */,
 				CE46997328F9C307006CCD35 /* NetworkService.swift in Sources */,
 				CE8D6E0F26A3069000A25380 /* SceneDelegate.swift in Sources */,
 				CE8D6E6026A9B12600A25380 /* ProfileHeaderView.swift in Sources */,

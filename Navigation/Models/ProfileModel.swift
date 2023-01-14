@@ -12,6 +12,23 @@ struct PostBody {
     var views: Int16
 }
 
+
+
+struct News: Codable {
+    var articles: [Article]
+    
+}
+
+struct Article: Codable {
+    var author: String?
+    var title: String?
+    var description: String?
+    var url: String?
+    var urlToImage: String?
+    var publishedAt: String?
+    var content: String?
+}
+
 struct ImageSet {
     let rowIndex: Int
     let image: UIImage

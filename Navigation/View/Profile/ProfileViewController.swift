@@ -4,13 +4,21 @@ class ProfileViewController: UIViewController, PhotosTableViewCellDelegate, Coor
     
     var coordinator: CoordinatorProtocol?
     let coreManager = CoreDataManager.shared
-
+    private let networkManager: NetworkManagerProtocol = NetworkManager()
+    private lazy var decoder: JSONDecoder = {
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        return decoder
+    }()
+    
     let tableView: UITableView = {
         var table = UITableView()
         table.frame = .zero
         return table
     }()
 
+//MARK: Lifecycle
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
@@ -21,6 +29,7 @@ class ProfileViewController: UIViewController, PhotosTableViewCellDelegate, Coor
         view.backgroundColor = .lightGray
         setupTableView()
         setupConstraints()
+        getData()
     }
 
     func setupTableView() {
@@ -51,8 +60,74 @@ class ProfileViewController: UIViewController, PhotosTableViewCellDelegate, Coor
         navigationController?.pushViewController(controller, animated: true)
     }
 
+//    private func fetchNews(completion: @escaping (Result<Data, NetworkError>) -> Void) {
+//        let endPoint = self.urlComponents()
+//        if let url = endPoint.url {
+//            self.sendRequest(for: url, completion: completion)
+//        } else {
+//            completion(.failure(.unknownError))
+//        }
+//    }
+    
+    func getData() {
+        var news: [Article] = []
+        var catchedError: NetworkError?
+        print("BEGIN")
+        let completion: (Result<Data, NetworkError>) -> Void = {[weak self] result in
+            guard let self = self else {
+                return
+            }
+            switch result {
+            case .success(let data):
+                do {
+                    let answer = try self.parse(News.self, from: data)
+                    
+                    guard answer.articles.count > 0 else {
+                        catchedError = .parseError(reason: "Couldn't parse JSON")
+                        print(catchedError?.localizedDescription)
+                        return
+                    }
+                    news = answer.articles
+                } catch {
+                    if let error = error as? NetworkError {
+                        catchedError = error
+                    } else {
+                        catchedError = .unknownError
+                    }
+                }
+            case .failure(let error):
+                catchedError = error
+            }
+            
+        }
+        let url = URL(string: "https://newsapi.org/v2/top-headlines?country=ru&apiKey=4d3913c1ba72456ba01a30bd96e6c741")
+        self.networkManager.request(url: url!, completion: completion)
+        print(news.count)
+    }
+    
+    private func urlComponents() -> URLComponents {
+        var urlComponents = URLComponents()
+        urlComponents.scheme = "https"
+        urlComponents.host = "newsapi.org"
+        urlComponents.path = "/v2/top-headlines"
+        urlComponents.queryItems = [
+            URLQueryItem(name: "country", value: "ru"),
+      //      URLQueryItem(name: "sortBy", value: "publishedAt"),
+            URLQueryItem(name: "apiKey", value: "d3913c1ba72456ba01a30bd96e6c741"),
+        ]
+        return urlComponents
+    }
+    
+    private func parse<T: Decodable>(_ type: T.Type, from data: Data) throws -> T {
+        do {
+            let model = try self.decoder.decode(T.self, from: data)
+            return model
+        } catch let error {
+            throw NetworkError.parseError(reason: error.localizedDescription)
+        }
+    }
+    
     func viewallButtonTapped() {
-        print("Tapped Arrw")
         openGallery()
     }
 
@@ -62,7 +137,7 @@ class ProfileViewController: UIViewController, PhotosTableViewCellDelegate, Coor
     }
     
     
-    @objc func handleTap(_ sender: CustomJestureRecognizer){
+    @objc func handleTap(_ sender: CustomJestureRecognizer) {
         let post = sender.post
         guard post != nil else {
             print ("Unexpected nil Post")
@@ -96,7 +171,6 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier, for: indexPath) as? PostTableViewCell
         let cellPost = PostStorage.tableModel[indexPath.section].body[indexPath.row - 1]
         let doubleTapp = CustomJestureRecognizer(target: self, action: #selector(ProfileViewController.handleTap(_:)))
-  //      doubleTapp.delegate = self
         doubleTapp.numberOfTapsRequired = 2
         doubleTapp.post = cellPost
         cell?.addGestureRecognizer(doubleTapp)
