@@ -32,7 +32,7 @@ class PhotosTableViewCell: UITableViewCell {
 
     let photosLabel: UILabel = {
        let label = UILabel()
-        label.text = "Photos"
+        label.text = "Photos"~
         label.textColor = UIColor.black
         label.font = .boldSystemFont(ofSize: 24)
         return label
@@ -121,7 +121,6 @@ extension PhotosTableViewCell: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         delegate?.openGallery()
-        print("PhotoTapped")
     }
 }
 protocol PhotosTableViewCellDelegate: AnyObject {

@@ -3,7 +3,7 @@ import SnapKit
 class ProfileHeaderView: UIView {
     
     static let identifier = "ProfileHeader"
-    var status: String? = "Waiting for something..."
+    var status: String? = "Waiting for something..."~
     var isSelected: Bool = false
     var avatarImageView: UIImageView = {
         var image: UIImageView = UIImageView()
@@ -18,7 +18,7 @@ class ProfileHeaderView: UIView {
     }()
     var fullNameLabel: UILabel = {
         var name: UILabel = UILabel()
-        name.text = "Pajama Kid"
+        name.text = "Pajama Kid"~
         name.font = .boldSystemFont(ofSize: 18)
         return name
     }()
@@ -59,12 +59,12 @@ class ProfileHeaderView: UIView {
     var statusTextField: UITextField = {
         var textfield: UITextField = UITextField()
         textfield.setStyle(style: .status)
-        textfield.placeholder = "Enter status"
+        textfield.placeholder = "Enter status"~
         textfield.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
         return textfield
     }()
     lazy var setStatusButton: CustomButton = {
-        var btn = CustomButton(title: "Set status", titleColor: .white, onTap: statusButtonTapped)
+        var btn = CustomButton(title: "Set status"~, titleColor: .white, onTap: statusButtonTapped)
         btn.setStyle(style: .status)
         return btn
     }()

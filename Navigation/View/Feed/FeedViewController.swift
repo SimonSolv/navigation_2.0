@@ -5,14 +5,14 @@ class FeedViewController: UIViewController, Coordinated {
     
     var coordinator: CoordinatorProtocol?
 
-    var titleInfo = MyPost(title: "Chuck Norris Joke")
+    var titleInfo = MyPost(title: "Chuck Norris Joke"~)
 
     var checkWord: String?
 
     lazy var firstTextfield: UITextField = {
         let textfield = UITextField()
         textfield.setStyle(style: .other)
-        textfield.placeholder = "Введите проверочное слово"
+        textfield.placeholder = "Enter verification word"~
         textfield.addTarget(self, action: #selector(firstTextfieldChanged), for: .editingChanged)
         return textfield
     }()
@@ -20,7 +20,7 @@ class FeedViewController: UIViewController, Coordinated {
     lazy var redLabel: UILabel = {
         let label = UILabel(frame: CGRect(x: self.view.center.x-75, y: 600, width: 150, height: 50))
         label.layer.backgroundColor = UIColor.red.cgColor
-        label.text = "Wrong word"
+        label.text = "Wrong word"~
         label.textAlignment = .center
         label.layer.cornerRadius = 5
         label.textColor = .white
@@ -30,7 +30,7 @@ class FeedViewController: UIViewController, Coordinated {
     lazy var greenLabel: UILabel = {
         let label = UILabel(frame: CGRect(x: self.view.center.x-75, y: 600, width: 150, height: 50))
         label.layer.backgroundColor = UIColor.green.cgColor
-        label.text = "Correct word"
+        label.text = "Correct word"~
         label.textAlignment = .center
         label.layer.cornerRadius = 5
         label.textColor = .black
@@ -38,7 +38,7 @@ class FeedViewController: UIViewController, Coordinated {
     }()
 
     lazy var checkButton: CustomButton = {
-        let btn = CustomButton(title: "Check", titleColor: .white, onTap: checkButtonTapped)
+        let btn = CustomButton(title: "Check"~, titleColor: .white, onTap: checkButtonTapped)
         btn.setStyle(style: .login)
         return btn
     }()
@@ -52,20 +52,20 @@ class FeedViewController: UIViewController, Coordinated {
     }
 
     func displayEptyFieldAlert() {
-        let alertVC = UIAlertController(title: "Ошибка", message: "Вы ничего не ввели", preferredStyle: .alert )
-        let okAction = UIAlertAction(title: "Ok", style: .destructive, handler: {(_: UIAlertAction!) in })
+        let alertVC = UIAlertController(title: "Error"~, message: "Enter something!"~, preferredStyle: .alert )
+        let okAction = UIAlertAction(title: "Ok"~, style: .destructive, handler: {(_: UIAlertAction!) in })
         alertVC.addAction(okAction)
         self.present(alertVC, animated: true, completion: nil)
     }
 
     lazy var postButton1: CustomButton = {
-        let btn = CustomButton(title: "Chuck Norris Random Joke", titleColor: .white, onTap: openRandomJokes)
+        let btn = CustomButton(title: "Chuck Norris Random Joke"~, titleColor: .white, onTap: openRandomJokes)
         btn.backgroundColor = .systemRed
         return btn
     }()
 
     lazy var postButton2: CustomButton = {
-        let btn = CustomButton(title: "Search my joke", titleColor: .white, onTap: openSearchJoke)
+        let btn = CustomButton(title: "Search my joke"~, titleColor: .white, onTap: openSearchJoke)
         btn.backgroundColor = .systemGray
         return btn
     }()
@@ -88,7 +88,7 @@ class FeedViewController: UIViewController, Coordinated {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Feed"
+        self.title = "Feed"~
         setupViews()
         setupConstraints()
         buttonsView.spacing = 10

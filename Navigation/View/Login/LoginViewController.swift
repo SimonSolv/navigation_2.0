@@ -27,7 +27,7 @@ class LoginViewController: UIViewController, Coordinated {
 
 //MARK: Views
     lazy var signInLineButton: CustomButton = {
-        let label = CustomButton(title: "Sign up with e-mail", titleColor: .systemBlue, onTap: self.signInButtonTapped)
+        let label = CustomButton(title: "Sign in with e-mail"~, titleColor: .systemBlue, onTap: self.signInButtonTapped)
         return label
     }()
     
@@ -44,13 +44,13 @@ class LoginViewController: UIViewController, Coordinated {
     }()
 
     lazy var loginButton: CustomButton = {
-        var btn: CustomButton = CustomButton(title: "Log in", titleColor: .white, onTap: self.loginButtonTapped)
+        var btn: CustomButton = CustomButton(title: "Log in"~, titleColor: .white, onTap: self.loginButtonTapped)
         btn.setStyle(style: .login)
         return btn
     }()
     
     lazy var createPasswordButton: CustomButton = {
-        var btn: CustomButton = CustomButton(title: "Подобрать пароль", titleColor: .white, onTap: self.createPasswordButtonTapped)
+        var btn: CustomButton = CustomButton(title: "Hack password"~, titleColor: .white, onTap: self.createPasswordButtonTapped)
         btn.setStyle(style: .login)
         return btn
     }()
@@ -63,7 +63,7 @@ class LoginViewController: UIViewController, Coordinated {
     lazy var loginTextField: UITextField = {
         var textfield: UITextField = UITextField(frame: CGRect(x: 0, y: 0, width: 0, height: 50))
         textfield.setStyle(style: .login)
-        textfield.placeholder = "Email or phone"
+        textfield.placeholder = "Email or phone"~
         textfield.addTarget(self, action: #selector(loginTextChanged), for: .editingChanged)
         textfield.addTarget(self, action: #selector(passwordFieldTapped), for: .editingDidBegin)
         return textfield
@@ -72,7 +72,7 @@ class LoginViewController: UIViewController, Coordinated {
     lazy var passwordTextField: UITextField = {
         var textfield: UITextField = UITextField(frame: CGRect(x: 0, y: 0, width: 0, height: 50))
         textfield.setStyle(style: .login)
-        textfield.placeholder = "Password"
+        textfield.placeholder = "Password"~
         textfield.addTarget(self, action: #selector(passwordTextChanged), for: .editingChanged)
         textfield.addTarget(self, action: #selector(passwordFieldTapped), for: .editingDidBegin)
         textfield.addTarget(self, action: #selector(secureTypeOn), for: .editingDidBegin)
@@ -92,7 +92,7 @@ class LoginViewController: UIViewController, Coordinated {
     lazy var wrongPswdView: UILabel = {
         let label = UILabel()
         label.textColor = .red
-        label.text = "Неверный логин или пароль"
+        label.text = "Incorrect login or password"~
         label.font = .systemFont(ofSize: 15)
         return label
     }()
@@ -116,7 +116,7 @@ class LoginViewController: UIViewController, Coordinated {
     
     func createPasswordButtonTapped() {
         passwordToUnlock = generatePassword(digits: 3)
-        self.createPasswordButton.setTitle("Сгенерирован пароль \(passwordToUnlock)", for: .normal)
+        self.createPasswordButton.setTitle("Generate password"~ + " \(passwordToUnlock)", for: .normal)
 
         let operation = BrudForceOperation(doBlock: {
             self.brudPass = self.bruteForce(passwordToUnlock: self.passwordToUnlock)
@@ -126,7 +126,7 @@ class LoginViewController: UIViewController, Coordinated {
         let endHandleOperation = BrudForceOperation(doBlock: {
             self.activityIndicatorHandler(state: false)
             self.unvealdPassword(password: self.brudPass)
-            self.createPasswordButton.setTitle("Подобрать пароль", for: .normal)
+            self.createPasswordButton.setTitle("Hack password"~, for: .normal)
         })
         endHandleOperation.addDependency(operation)
         
@@ -406,14 +406,12 @@ extension LoginViewController {
     }
     
     func signInButtonTapped() {
-        print("SignIn tapped")
         let controller = SignUpViewController()
         controller.delegate = self.inspector
         self.present(controller, animated: true)
     }
     
     func loginButtonTapped() {
-        print("TappingLogin")
         if self.loginTextField.text != "" && self.passwordTextField.text != "" {
             inspector.checkCredentials(email: self.loginTextField.text!, password: self.passwordTextField.text!, iniciator: self, realm: true)
         } else {

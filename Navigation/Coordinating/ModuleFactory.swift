@@ -10,20 +10,20 @@ final class ModuleFactory: FabricProtocol {
         case .feed:
             let controller: FeedViewController = {
                 let controller = FeedViewController()
-                controller.tabBarItem = UITabBarItem(title: "Feed", image: UIImage(systemName: "newspaper"), selectedImage: UIImage(systemName: "newspaper.fill"))
+                controller.tabBarItem = UITabBarItem(title: "Feed"~, image: UIImage(systemName: "newspaper"), selectedImage: UIImage(systemName: "newspaper.fill"))
                 controller.coordinator = self.coordinator
                 return controller
             }()
             return controller
         case .profile:
             let controller = ProfileViewController()
-            controller.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), selectedImage: UIImage(systemName: "person.fill"))
+            controller.tabBarItem = UITabBarItem(title: "Profile"~, image: UIImage(systemName: "person"), selectedImage: UIImage(systemName: "person.fill"))
             controller.coordinator = self.coordinator
             return controller
         case .login:
             let loginController: LoginViewController = {
                 let controller = LoginViewController()
-                controller.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), selectedImage: UIImage(systemName: "person.fill"))
+                controller.tabBarItem = UITabBarItem(title: "Profile"~, image: UIImage(systemName: "person"), selectedImage: UIImage(systemName: "person.fill"))
                 controller.coordinator = self.coordinator
                 return controller
             }()
@@ -31,7 +31,7 @@ final class ModuleFactory: FabricProtocol {
         case .liked:
             let likedController: LikedViewController = {
                 let controller = LikedViewController()
-                controller.tabBarItem = UITabBarItem(title: "Liked", image: UIImage(systemName: "heart"), selectedImage: UIImage(systemName: "heart.fill"))
+                controller.tabBarItem = UITabBarItem(title: "Liked"~, image: UIImage(systemName: "heart"), selectedImage: UIImage(systemName: "heart.fill"))
                 controller.coordinator = self.coordinator
                 return controller
             }()

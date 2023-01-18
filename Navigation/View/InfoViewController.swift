@@ -11,7 +11,7 @@ class InfoViewController: UIViewController {
     lazy var userTextLabel: UILabel = {
         let label = UILabel()
         label.font = .boldSystemFont(ofSize: 18)
-        label.text = "no data received"
+        label.text = "no data received"~
         label.backgroundColor = .white
         label.textAlignment = .center
         label.layer.cornerRadius = 10
@@ -34,7 +34,7 @@ class InfoViewController: UIViewController {
     lazy var planetLabel: UILabel = {
         let label = UILabel()
         label.font = .boldSystemFont(ofSize: 18)
-        label.text = "no data received"
+        label.text = "no data received"~
         label.backgroundColor = .white
         label.textAlignment = .center
         label.layer.cornerRadius = 10
@@ -46,7 +46,7 @@ class InfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .lightGray
-        self.title = "Info"
+        self.title = "Info"~
         setupViews()
         setupConstraints()
         getUsers(){ data in
@@ -72,7 +72,7 @@ class InfoViewController: UIViewController {
                 }
                 
                 DispatchQueue.main.async {
-                    self.planetLabel.text = "Planet \(self.planet!.name) period is \(self.planet!.orbital_period)"
+                    self.planetLabel.text = "Planet"~ + " \(self.planet!.name)" + " period is"~ + " \(self.planet!.orbital_period)"
                 }
             }
         })
@@ -82,9 +82,9 @@ class InfoViewController: UIViewController {
     }
     
     @objc func tapAlertButton() {
-        let alertVC = UIAlertController(title: "Ошибка", message: "Невозможно прочитать файл", preferredStyle: .alert )
-        let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: {(_: UIAlertAction!) in print("Ok Action")})
-        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive, handler: {(_: UIAlertAction!) in print("Cancel Action")})
+        let alertVC = UIAlertController(title: "Error"~, message: "Couldn't read file"~, preferredStyle: .alert )
+        let okAction = UIAlertAction(title: "Ok"~, style: .cancel, handler: {(_: UIAlertAction!) in print("Ok Action")})
+        let cancelAction = UIAlertAction(title: "Cancel"~, style: .destructive, handler: {(_: UIAlertAction!) in print("Cancel Action")})
         alertVC.addAction(cancelAction)
         alertVC.addAction(okAction)
         self.present(alertVC, animated: true, completion: nil)

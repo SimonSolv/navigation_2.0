@@ -43,7 +43,7 @@ class GalleryViewController: UIViewController, Coordinated {
     }()
     
     lazy var undoButton: CustomButton = {
-        let label = CustomButton(title: "Undo deleting", titleColor: .systemGray, onTap: {
+        let label = CustomButton(title: "Undo deleting"~, titleColor: .systemGray, onTap: {
             self.unDo()
         })
         label.titleLabel!.font = .boldSystemFont(ofSize: 18)
@@ -146,7 +146,7 @@ class GalleryViewController: UIViewController, Coordinated {
         }
         
         undoButton.snp.makeConstraints { (make) in
-            make.width.equalTo(150)
+            make.trailing.equalTo(undoTime.snp.trailing).offset(-10)
             make.centerY.equalTo(undoView.snp.centerY)
             make.leading.equalTo(undoView.snp.leading).offset(5)
             make.height.equalTo(40)
@@ -164,7 +164,7 @@ class GalleryViewController: UIViewController, Coordinated {
 //MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Photo gallery"
+        self.title = "Photo gallery"~
         navigationController?.navigationBar.isHidden = false
         view.backgroundColor = .white
         setupViews()
@@ -172,7 +172,7 @@ class GalleryViewController: UIViewController, Coordinated {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.title = "Photo gallery"
+        self.title = "Photo gallery"~
     }
 
 }

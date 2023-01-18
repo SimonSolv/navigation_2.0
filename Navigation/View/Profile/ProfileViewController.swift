@@ -52,7 +52,6 @@ class ProfileViewController: UIViewController, PhotosTableViewCellDelegate, Coor
     }
     func galleryButtonTapped() {
         self.openGallery()
-        print("GalleryButton Pressed")
     }
 
     func openGallery() {
@@ -72,7 +71,6 @@ class ProfileViewController: UIViewController, PhotosTableViewCellDelegate, Coor
     func getData() {
         var news: [Article] = []
         var catchedError: NetworkError?
-        print("BEGIN")
         let completion: (Result<Data, NetworkError>) -> Void = {[weak self] result in
             guard let self = self else {
                 return
