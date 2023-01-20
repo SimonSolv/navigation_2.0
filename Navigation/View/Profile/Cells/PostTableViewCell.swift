@@ -12,8 +12,8 @@ class PostTableViewCell: UITableViewCell {
             postImageView.image = UIImage(named: post!.imageName)
             postTitle.text = post?.title
             postDescription.text = post?.bodyText
-            postViews.text = "Views: \(post?.views ?? 0)"
-            postLikes.text = "Likes: \(post?.likes ?? 0)"
+            postViews.text = "Views:"~ + " \(post?.views ?? 0)"
+            postLikes.text = "Likes:"~ + " \(post?.likes ?? 0)"
         }
     }
 

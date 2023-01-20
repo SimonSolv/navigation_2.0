@@ -71,11 +71,11 @@ class GalleryCollectionViewCell: UICollectionViewCell {
     }
     
     func displayDeletingAlert() {
-        let alertVC = UIAlertController(title: "Warning", message: "Are you sure you want to delete this photo?", preferredStyle: .alert )
-        let okAction = UIAlertAction(title: "Delete", style: .destructive, handler: {(_: UIAlertAction!) in
+        let alertVC = UIAlertController(title: "Warning"~, message: "Are you sure you want to delete this photo?"~, preferredStyle: .alert )
+        let okAction = UIAlertAction(title: "Delete"~, style: .destructive, handler: {(_: UIAlertAction!) in
             self.controller!.deleteCell(self.imageView.image!)
         })
-        let denyAction = UIAlertAction(title: "Cancel", style: .default, handler: {(_: UIAlertAction!) in })
+        let denyAction = UIAlertAction(title: "Cancel"~, style: .default, handler: {(_: UIAlertAction!) in })
         alertVC.addAction(okAction)
         alertVC.addAction(denyAction)
         controller!.present(alertVC, animated: true, completion: nil)

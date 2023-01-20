@@ -1,0 +1,88 @@
+/* 
+  Localizable.strings
+  Navigation
+
+  Created by Simon Pegg on 18.01.2023.
+  
+*/
+
+//TabNames
+"Feed" = "Feed";
+"Profile" = "Profile";
+"Liked" = "Liked";
+
+//MARK: -Views
+
+//Sign Up Controller
+"Your e-mail *" = "Your e-mail *";
+"* Fields are neccessary to fill" = "* Fields are neccessary to fill";
+"Sign in with e-mail" =" Sign in with e-mail";
+"Create password *" = "Create password *";
+"Type your email" = "Type your email";
+"Create password" = "Create password";
+"Sign in" = "Sign in";
+
+//Info Controller
+"Info" = "Info";
+"Error" = "Error";
+"Couldn't read file" = "Couldn't read file";
+"Ok" = "Ok";
+"Cancel" = "Cancel";
+"Planet" = "Planet";
+" period is" = " period is";
+"no data received" = "no data received";
+
+//Feed Controller
+"Chuck Norris Joke" = "Chuck Norris Joke";
+"Enter verification word" = "Enter verification word";
+"Wrong word" = "Wrong word";
+"Correct word" = "Correct word";
+"Check" = "Check";
+"Enter something!" = "Enter something!";
+"Chuck Norris Random Joke" = "Chuck Norris Random Joke";
+"Search my joke" = "Search my joke";
+
+//Joke controller
+"Tap Get Joke" = "Tap Get Joke";
+"Get Joke" = "Get Joke";
+"Something went wrong: push Get Joke again" = "Something went wrong: push Get Joke again";
+
+//Search Joke Controller
+"Search Joke" = "Search Joke";
+
+//Gallery controller
+"Undo deleting" = "Undo deleting";
+"Photo gallery" = "Photo gallery";
+"Warning" = "Warning";
+"Are you sure you want to delete this photo?" = "Are you sure you want to delete this photo?";
+"Delete" = "Delete";
+
+//Post controller
+"Views:" = "Views:";
+"Likes:" = "Likes:";
+"Photos" = "Photos";
+
+//Profile Controller
+"Waiting for something..." = "Waiting for something...";
+"Pajama Kid" = "Pajama Kid";
+"Enter status" = "Enter status";
+"Set status" = "Set status";
+//Liked Controller
+
+"Liked posts" = "Liked posts";
+
+//Login Controller
+"Log in" = "Log in";
+"Hack password" = "Hack password";
+"Email or phone" = "Email or phone";
+"Password" = "Password";
+"Incorrect login or password" = "Incorrect login or password";
+"Generate password" = "Generate password";
+
+
+
+
+
+
+
+

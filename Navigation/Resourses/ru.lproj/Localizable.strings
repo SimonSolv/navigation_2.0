@@ -1,0 +1,81 @@
+/* 
+  Localizable.strings
+  Navigation
+
+  Created by Simon Pegg on 18.01.2023.
+  
+*/
+
+//TabNames
+
+"Feed" = "Лента";
+"Profile" = "Профиль";
+"Liked" = "Лайки";
+
+//MARK: -Views
+
+//Sign Up Controller
+
+"Your e-mail *" = "Ваш e-mail *";
+"* Fields are neccessary to fill" = "* Поля обязательные для заполнения";
+"Sign in with e-mail" = "Регистрация по e-mail";
+"Create password *" = "Придумайте пароль *";
+"Type your email" = "Введите email";
+"Create password" = "Новый пароль";
+"Sign in" = "Зарегистрироваться";
+
+//Info Controller
+"Info" = "Инфо";
+"Error" = "Ошибка";
+"Couldn't read file" = "Невозможно прочитать файл";
+"Ok" = "Ok";
+"Cancel" = "Отмена";
+"Planet" = "У планеты";
+" period is" = " период вращения";
+"no data received" = "данные не получены";
+//Feed Controller
+"Chuck Norris Joke" = "Шутки Чака Норриса";
+"Enter verification word" = "Введите проверочное слово";
+"Wrong word" = "Нерпавильно";
+"Correct word" = "Правильно";
+"Check" = "Проверка";
+"Enter something!" = "Вы ничего не ввели!";
+"Chuck Norris Random Joke" = "Случайная шутка Чака Норриса";
+"Search my joke" = "Поиск шутки";
+
+//Joke controller
+"Tap Get Joke" = "Нажмите чтобы найти шутку";
+"Get Joke" = "Поиск шутки";
+"Something went wrong: push Get Joke again" = "Что-то пошло не так: нажмите Поиск шутки снова";
+
+//Search Joke Controller
+"Search Joke" = "Искать шутки";
+
+//Gallery controller
+"Undo deleting" = "Отменить удаление";
+"Photo gallery" = "Фотогалерея";
+"Warning" = "Внимание";
+"Are you sure you want to delete this photo?" = "Вы уверены, что хотите удалить это фото?";
+"Delete" = "Удалить";
+
+//Post controller
+"Views:" = "Просмотров:";
+"Likes:" = "Лайков:";
+"Photos" = "Фото";
+
+//Profile Controller
+"Waiting for something..." = "Чего-то жду...";
+"Pajama Kid" = "Парень в пижаме";
+"Enter status" = "Введите статус";
+"Set status" = "Установить статус";
+//Liked Controller
+
+"Liked posts" = "Лайки";
+
+//Login Controller
+"Log in" = "Вход";
+"Hack password" = "Взломать пароль";
+"Email or phone" = "Email или телефон";
+"Password" = "Пароль";
+"Incorrect login or password" = "Неправильный логин или пароль";
+"Generate password" = "GСгенерировать пароль";

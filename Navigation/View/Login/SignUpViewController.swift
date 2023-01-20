@@ -20,7 +20,7 @@ class SignUpViewController: UIViewController {
     
     lazy var loginLabel:UILabel = {
        let label = UILabel()
-        label.text = "Your e-mail *"
+        label.text = "Your e-mail *"~
         label.font = .systemFont(ofSize: 20)
         label.textColor = .systemGray
         return label
@@ -28,7 +28,7 @@ class SignUpViewController: UIViewController {
     
     lazy var nessesLabel:UILabel = {
        let label = UILabel()
-        label.text = "* Fields are neccessary to fill"
+        label.text = "* Fields are neccessary to fill"~
         label.font = .systemFont(ofSize: 20)
         label.textColor = .systemGray
         return label
@@ -36,7 +36,7 @@ class SignUpViewController: UIViewController {
     
     lazy var titleLabel:UILabel = {
        let label = UILabel()
-        label.text = "Sign in with e-mail"
+        label.text = "Sign in with e-mail"~
         label.font = .boldSystemFont(ofSize: 28)
         label.textColor = .black
         label.textAlignment = .center
@@ -45,7 +45,7 @@ class SignUpViewController: UIViewController {
     
     lazy var passwordLabel:UILabel = {
        let label = UILabel()
-        label.text = "Create password *"
+        label.text = "Create password *"~
         label.font = .systemFont(ofSize: 20)
         label.textColor = .systemGray
         return label
@@ -54,7 +54,7 @@ class SignUpViewController: UIViewController {
     lazy var loginTextField: UITextField = {
         var textfield: UITextField = UITextField(frame: .zero)
         textfield.setStyle(style: .login)
-        textfield.placeholder = "Type your email"
+        textfield.placeholder = "Type your email"~
         textfield.addTarget(self, action: #selector(loginTextChanged), for: .editingChanged)
         textfield.addTarget(self, action: #selector(passwordFieldTapped), for: .editingDidBegin)
         return textfield
@@ -63,7 +63,7 @@ class SignUpViewController: UIViewController {
     lazy var passwordTextField: UITextField = {
         var textfield: UITextField = UITextField(frame: .zero)
         textfield.setStyle(style: .login)
-        textfield.placeholder = "Create password"
+        textfield.placeholder = "Create password"~
         textfield.addTarget(self, action: #selector(passwordTextChanged), for: .editingChanged)
         textfield.addTarget(self, action: #selector(passwordFieldTapped), for: .editingDidBegin)
         textfield.addTarget(self, action: #selector(secureTypeOn), for: .editingDidBegin)
@@ -71,7 +71,7 @@ class SignUpViewController: UIViewController {
     }()
     
     lazy var signInButton: CustomButton = {
-        var btn: CustomButton = CustomButton(title: "Sign in", titleColor: .white, onTap: self.createUserButtonTapped)
+        var btn: CustomButton = CustomButton(title: "Sign in"~, titleColor: .white, onTap: self.createUserButtonTapped)
         btn.setStyle(style: .login)
         return btn
     }()

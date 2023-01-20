@@ -30,7 +30,7 @@ class SearchJokeViewController: UITableViewController, UISearchBarDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Search Joke"
+        title = "Search Joke"~
         view.backgroundColor = .systemGray6
         tableView.register(JokeTableViewCell.self, forCellReuseIdentifier: JokeTableViewCell.identifier)
 

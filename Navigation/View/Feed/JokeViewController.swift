@@ -12,14 +12,14 @@ class JokeViewController: UIViewController {
         label.shadowOffset = CGSize(width: 5, height: 5)
         label.numberOfLines = 0
         label.textAlignment = .center
-        label.text = "Tap Get Joke"
+        label.text = "Tap Get Joke"~
         return label
     }()
     
     lazy var infoButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(share))
     
     lazy var refreshButton: UIButton = {
-        let button = CustomButton(title: "Get Joke", titleColor: .black, onTap: {
+        let button = CustomButton(title: "Get Joke"~, titleColor: .black, onTap: {
             getRandomJoke(completion: { joke in
                 DispatchQueue.main.async {
                     self.infoButton.isEnabled = true
@@ -27,7 +27,7 @@ class JokeViewController: UIViewController {
                         self.jokeLabel.text = joke.text
                         self.infoButton.isEnabled = true
                     } else {
-                        self.jokeLabel.text = "Something went wrong: push Get Joke again"
+                        self.jokeLabel.text = "Something went wrong: push Get Joke again"~
                         self.infoButton.isEnabled = false
                     }
                 }

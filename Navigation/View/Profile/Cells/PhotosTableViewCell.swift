@@ -18,7 +18,7 @@ class PhotosTableViewCell: UITableViewCell {
         return view
     }()
 
-    private var tempStorage:[UIImage] = [] {
+    private var tempStorage: [UIImage] = [] {
         didSet {
             collectionView.reloadData()
         }
@@ -26,13 +26,13 @@ class PhotosTableViewCell: UITableViewCell {
 
     lazy var viewAllButton: CustomButton = {
         let btn = CustomButton(title: "", titleColor: .white, onTap: viewAllButtonTapped)
-        btn.setImage(UIImage(named: "rightArrow"), for: .normal)
-       return btn
+        btn.setImage(UIImage(systemName: "arrow.right"), for: .normal)
+        return btn
     }()
 
     let photosLabel: UILabel = {
        let label = UILabel()
-        label.text = "Photos"
+        label.text = "Photos"~
         label.textColor = UIColor.black
         label.font = .boldSystemFont(ofSize: 24)
         return label
@@ -49,8 +49,7 @@ class PhotosTableViewCell: UITableViewCell {
     }
 
     private func setupConstraints() {
-        
-//        contentView.snp.makeConstraints {(make) in
+//        contentView.snp.makeConstraints { (make) in
 //            make.height.equalTo(200)
 //        }
         
@@ -69,13 +68,11 @@ class PhotosTableViewCell: UITableViewCell {
         
         collectionView.snp.makeConstraints { (make) in
             make.top.equalTo(photosLabel.snp.bottom).offset(12)
-            make.leading.equalTo(collectionView.snp.leading)
-            make.trailing.equalTo(collectionView.snp.trailing)
-          //  make.height.equalTo(60)
+            make.leading.equalTo(contentView.snp.leading)
+            make.trailing.equalTo(contentView.snp.trailing)
+  //          make.height.equalTo(60)
             make.bottom.equalTo(contentView.snp.bottom).offset(-12)
         }
-        
-        
     }
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -124,7 +121,6 @@ extension PhotosTableViewCell: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         delegate?.openGallery()
-        print("PhotoTapped")
     }
 }
 protocol PhotosTableViewCellDelegate: AnyObject {
