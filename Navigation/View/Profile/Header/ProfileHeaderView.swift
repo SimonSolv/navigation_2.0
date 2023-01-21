@@ -12,7 +12,7 @@ class ProfileHeaderView: UIView {
         image.clipsToBounds = true
         image.contentMode = .scaleAspectFill
         image.layer.borderWidth = 3
-        image.layer.borderColor = CGColor(srgbRed: 100, green: 100, blue: 100, alpha: 100)
+        image.layer.borderColor = UIColor.white.cgColor
         image.isUserInteractionEnabled = true
         return image
     }()
@@ -26,7 +26,7 @@ class ProfileHeaderView: UIView {
         var status: UILabel = UILabel()
         status.font = .systemFont(ofSize: 14)
         status.font = .boldSystemFont(ofSize: 18)
-        status.textColor = .gray
+        status.textColor = .systemGray
         return status
     }()
 
@@ -56,13 +56,17 @@ class ProfileHeaderView: UIView {
         view.layer.opacity = 0
         return view
     }()
+    
     var statusTextField: UITextField = {
         var textfield: UITextField = UITextField()
         textfield.setStyle(style: .status)
         textfield.placeholder = "Enter status"~
+        textfield.backgroundColor = .systemGray6
+        textfield.layer.borderColor = AppColor.border.cgColor
         textfield.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
         return textfield
     }()
+    
     lazy var setStatusButton: CustomButton = {
         var btn = CustomButton(title: "Set status"~, titleColor: .white, onTap: statusButtonTapped)
         btn.setStyle(style: .status)
@@ -74,9 +78,8 @@ class ProfileHeaderView: UIView {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tap))
 //        addGestureRecognizer(tapGesture)
         statusLabel.text = status
-        backgroundColor = .systemGray6
+        backgroundColor = AppColor.background
         avatarImageView.addGestureRecognizer(tapGesture)
-        
         setupViews()
         setupConstraints()
 

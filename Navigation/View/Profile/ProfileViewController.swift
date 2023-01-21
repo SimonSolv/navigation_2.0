@@ -26,7 +26,7 @@ class ProfileViewController: UIViewController, PhotosTableViewCellDelegate, Coor
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .lightGray
+        view.backgroundColor = AppColor.background
         setupTableView()
         setupConstraints()
         getData()

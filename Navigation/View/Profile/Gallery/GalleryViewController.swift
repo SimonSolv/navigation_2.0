@@ -38,7 +38,7 @@ class GalleryViewController: UIViewController, Coordinated {
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
         view.register(GalleryCollectionViewCell.self, forCellWithReuseIdentifier: GalleryCollectionViewCell.identifier)
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .white
+        view.backgroundColor = AppColor.background
         return view
     }()
     
@@ -119,7 +119,7 @@ class GalleryViewController: UIViewController, Coordinated {
     }
     
 
-//MARK: Constraints
+//MARK: Setup
     private func setupViews() {
 
         view.addSubview(collectionView)
@@ -166,7 +166,7 @@ class GalleryViewController: UIViewController, Coordinated {
         super.viewDidLoad()
         self.title = "Photo gallery"~
         navigationController?.navigationBar.isHidden = false
-        view.backgroundColor = .white
+        view.backgroundColor = AppColor.background
         setupViews()
     }
 

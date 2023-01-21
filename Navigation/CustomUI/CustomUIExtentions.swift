@@ -42,6 +42,39 @@ final class CustomWarnAlert: UIAlertController {
 
 }
 
+struct AppColor {
+    static var background: UIColor = {
+        return UIColor(named: "AppBackground")!
+    }()
+    static var border: UIColor = {
+        return UIColor(named: "AppBorder")!
+    }()
+    static var accent: UIColor = {
+        return UIColor(named: "AppAccent")!
+    }()
+    static var accent2: UIColor = {
+        return UIColor(named: "AppAccent2")!
+    }()
+    static var button: UIColor = {
+        return UIColor(named: "AppButton")!
+    }()
+    static var white: UIColor = {
+        return UIColor(named: "AppCustomWhite")!
+    }()
+    static var text: UIColor = {
+        return UIColor(named: "AppText")!
+    }()
+    static var darkText: UIColor = {
+        return UIColor(named: "AppDarkText")!
+    }()
+    static var shadow: UIColor = {
+        return UIColor(named: "AppShadow")!
+    }()
+    static var tabBar: UIColor = {
+        return UIColor(named: "AppTabBar")!
+    }()
+}
+
 extension CustomButton {
     enum Style {
         case login
@@ -50,13 +83,13 @@ extension CustomButton {
     func setStyle(style: Style) {
         switch style {
         case .login:
-            self.setBackgroundImage(UIImage(named: "blue_pixel"), for: .normal)
+            self.backgroundColor = AppColor.button
             self.layer.cornerRadius = 10
             self.clipsToBounds = true
         case .status:
-            self.backgroundColor = .blue
+            self.backgroundColor = AppColor.button
             self.layer.cornerRadius = 12
-            self.layer.shadowColor = UIColor.black.cgColor
+            self.layer.shadowColor = AppColor.shadow.cgColor
             self.layer.shadowOffset = CGSize(width: 5, height: 5)
             self.layer.shadowRadius = 5
             self.layer.shadowOpacity = 1.0
@@ -75,29 +108,29 @@ extension UITextField {
         case .login:
             self.backgroundColor = .systemGray6
             self.layer.borderWidth = 0.5
-            self.layer.borderColor = UIColor.lightGray.cgColor
+            self.layer.borderColor = UIColor.systemGray2.cgColor
             self.font = .systemFont(ofSize: 16)
-            self.textColor = .black
+            self.textColor = AppColor.text
             self.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: self.frame.height))
             self.leftViewMode = .always
 
         case .status:
-
             self.backgroundColor = .white
             self.layer.cornerRadius = 12
             self.layer.borderWidth = 1
             self.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: self.frame.height))
             self.leftViewMode = .always
-            self.layer.borderColor = UIColor.black.cgColor
+            self.layer.borderColor = AppColor.border.cgColor
             self.font = .systemFont(ofSize: 15)
-            self.textColor = .black
+            self.textColor = AppColor.text
+            
         case .other:
             self.layer.cornerRadius = 10
             self.backgroundColor = .systemGray6
             self.layer.borderWidth = 0.5
             self.layer.borderColor = UIColor.lightGray.cgColor
             self.font = .systemFont(ofSize: 16)
-            self.textColor = .black
+            self.textColor = AppColor.text
             self.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: self.frame.height))
             self.leftViewMode = .always
         }

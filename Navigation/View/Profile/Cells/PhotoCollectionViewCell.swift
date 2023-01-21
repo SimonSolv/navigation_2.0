@@ -22,6 +22,7 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     }()
 
     private func setupView() {
+        backgroundColor = AppColor.white
         contentView.addSubview(photoImage)
         photoImage.snp.makeConstraints {(make) in
             make.top.equalTo(contentView.snp.top)

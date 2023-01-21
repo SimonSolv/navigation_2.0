@@ -4,8 +4,6 @@ import Firebase
 import GoogleSignIn
 import RealmSwift
 
-
-
 class LoginViewController: UIViewController, Coordinated {
     
     var inspector = LoginInspector()
@@ -24,10 +22,10 @@ class LoginViewController: UIViewController, Coordinated {
             // ...
     }
     
-
-//MARK: Views
+//MARK: -Views
+    
     lazy var signInLineButton: CustomButton = {
-        let label = CustomButton(title: "Sign in with e-mail"~, titleColor: .systemBlue, onTap: self.signInButtonTapped)
+        let label = CustomButton(title: "Sign in with e-mail"~, titleColor: AppColor.text, onTap: self.signInButtonTapped)
         return label
     }()
     
@@ -44,13 +42,13 @@ class LoginViewController: UIViewController, Coordinated {
     }()
 
     lazy var loginButton: CustomButton = {
-        var btn: CustomButton = CustomButton(title: "Log in"~, titleColor: .white, onTap: self.loginButtonTapped)
+        var btn: CustomButton = CustomButton(title: "Log in"~, titleColor: UIColor.white, onTap: self.loginButtonTapped)
         btn.setStyle(style: .login)
         return btn
     }()
     
     lazy var createPasswordButton: CustomButton = {
-        var btn: CustomButton = CustomButton(title: "Hack password"~, titleColor: .white, onTap: self.createPasswordButtonTapped)
+        var btn: CustomButton = CustomButton(title: "Hack password"~, titleColor: AppColor.text, onTap: self.createPasswordButtonTapped)
         btn.setStyle(style: .login)
         return btn
     }()
@@ -84,7 +82,7 @@ class LoginViewController: UIViewController, Coordinated {
         view.layer.cornerRadius = 10
         view.clipsToBounds = true
         view.layer.borderWidth = 0.5
-        view.layer.borderColor = UIColor.lightGray.cgColor
+        view.layer.borderColor = UIColor.systemGray2.cgColor
         view.axis = .vertical
         return view
     }()
@@ -96,7 +94,9 @@ class LoginViewController: UIViewController, Coordinated {
         label.font = .systemFont(ofSize: 15)
         return label
     }()
-
+    
+//MARK: -Methods
+    
     func unvealdPassword(password: String) {
         self.passwordTextField.isSecureTextEntry = false
         self.passwordTextField.text = password
@@ -111,7 +111,6 @@ class LoginViewController: UIViewController, Coordinated {
             self.indicatorView.isHidden = true
             self.indicatorView.stopAnimating()
         }
-
     }
     
     func createPasswordButtonTapped() {
@@ -120,7 +119,6 @@ class LoginViewController: UIViewController, Coordinated {
 
         let operation = BrudForceOperation(doBlock: {
             self.brudPass = self.bruteForce(passwordToUnlock: self.passwordToUnlock)
-
         })
         
         let endHandleOperation = BrudForceOperation(doBlock: {
@@ -128,6 +126,7 @@ class LoginViewController: UIViewController, Coordinated {
             self.unvealdPassword(password: self.brudPass)
             self.createPasswordButton.setTitle("Hack password"~, for: .normal)
         })
+        
         endHandleOperation.addDependency(operation)
         
         let operationQueue = OperationQueue()
@@ -191,10 +190,6 @@ class LoginViewController: UIViewController, Coordinated {
        // print("User name is \(myUser.firstName)")
     }
     
-
-
-
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
@@ -221,7 +216,7 @@ class LoginViewController: UIViewController, Coordinated {
     
 //MARK: Setup
     func setupViews() {
-        view.backgroundColor = .white
+        view.backgroundColor = AppColor.background
         view.addSubview(contentView)
         contentView.addSubview(logoImageView)
         contentView.addSubview(loginButton)

@@ -6,7 +6,7 @@ class JokeViewController: UIViewController {
     lazy var jokeLabel: UILabel = {
         let label = UILabel()
         label.font = .boldSystemFont(ofSize: 22)
-        label.backgroundColor = .white
+        label.backgroundColor = AppColor.white
         label.layer.cornerRadius = 12
         label.clipsToBounds = true
         label.shadowOffset = CGSize(width: 5, height: 5)
@@ -19,7 +19,7 @@ class JokeViewController: UIViewController {
     lazy var infoButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(share))
     
     lazy var refreshButton: UIButton = {
-        let button = CustomButton(title: "Get Joke"~, titleColor: .black, onTap: {
+        let button = CustomButton(title: "Get Joke"~, titleColor: AppColor.text, onTap: {
             getRandomJoke(completion: { joke in
                 DispatchQueue.main.async {
                     self.infoButton.isEnabled = true
@@ -43,7 +43,7 @@ class JokeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .green
+        self.view.backgroundColor = .systemGray4
         navigationItem.rightBarButtonItem = infoButton
         infoButton.isEnabled = false
         self.title = titleName

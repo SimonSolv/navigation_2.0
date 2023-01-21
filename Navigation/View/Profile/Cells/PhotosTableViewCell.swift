@@ -11,7 +11,7 @@ class PhotosTableViewCell: UITableViewCell {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        view.backgroundColor = .white
+        view.backgroundColor = AppColor.background
         view.register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: PhotoCollectionViewCell.identifier )
         view.dataSource = self
         view.delegate = self
@@ -33,7 +33,7 @@ class PhotosTableViewCell: UITableViewCell {
     let photosLabel: UILabel = {
        let label = UILabel()
         label.text = "Photos"~
-        label.textColor = UIColor.black
+        label.textColor = UIColor(named: "Text")
         label.font = .boldSystemFont(ofSize: 24)
         return label
     }()
@@ -43,6 +43,8 @@ class PhotosTableViewCell: UITableViewCell {
     }
     
     private func setupViews() {
+        backgroundColor = AppColor.background
+        contentView.backgroundColor = AppColor.background
         contentView.addSubview(photosLabel)
         contentView.addSubview(viewAllButton)
         contentView.addSubview(collectionView)
@@ -70,7 +72,7 @@ class PhotosTableViewCell: UITableViewCell {
             make.top.equalTo(photosLabel.snp.bottom).offset(12)
             make.leading.equalTo(contentView.snp.leading)
             make.trailing.equalTo(contentView.snp.trailing)
-  //          make.height.equalTo(60)
+            make.height.equalTo(60)
             make.bottom.equalTo(contentView.snp.bottom).offset(-12)
         }
     }

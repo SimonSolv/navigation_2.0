@@ -27,7 +27,7 @@ class PostTableViewCell: UITableViewCell {
 
     lazy var postTitle: UILabel = {
         let label = UILabel()
-        label.textColor = .black
+        label.textColor = AppColor.text
         label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         label.numberOfLines = 2
         return label
@@ -43,7 +43,7 @@ class PostTableViewCell: UITableViewCell {
 
     lazy var postViews: UILabel = {
         let label = UILabel()
-        label.textColor = .black
+        label.textColor = AppColor.text
         label.font = UIFont.systemFont(ofSize: 16)
         label.numberOfLines = 1
         return label
@@ -51,7 +51,7 @@ class PostTableViewCell: UITableViewCell {
 
     lazy var postLikes: UILabel = {
         let label = UILabel()
-        label.textColor = .black
+        label.textColor = AppColor.text
         label.font = UIFont.systemFont(ofSize: 16)
         label.numberOfLines = 1
         return label
@@ -64,6 +64,8 @@ class PostTableViewCell: UITableViewCell {
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+        backgroundColor = AppColor.background
+        contentView.backgroundColor = AppColor.background
         setupViews()
     }
 
@@ -94,7 +96,7 @@ extension PostTableViewCell {
             make.top.equalTo(postTitle.snp.bottom).offset(12)
             make.leading.equalTo(contentView.snp.leading)
             make.trailing.equalTo(contentView.snp.trailing)
-            make.height.equalTo(contentView.snp.width)
+            //make.height.equalTo(contentView.snp.width)
         }
 
         postDescription.snp.makeConstraints { (make) in
