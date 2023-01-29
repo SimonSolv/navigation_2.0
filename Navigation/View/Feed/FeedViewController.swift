@@ -13,13 +13,14 @@ class FeedViewController: UIViewController, Coordinated {
         let textfield = UITextField()
         textfield.setStyle(style: .other)
         textfield.placeholder = "Enter verification word"~
+        textfield.textColor = AppColor.text
         textfield.addTarget(self, action: #selector(firstTextfieldChanged), for: .editingChanged)
         return textfield
     }()
 
     lazy var redLabel: UILabel = {
         let label = UILabel(frame: CGRect(x: self.view.center.x-75, y: 600, width: 150, height: 50))
-        label.layer.backgroundColor = UIColor.red.cgColor
+        label.layer.backgroundColor = UIColor.systemRed.cgColor
         label.text = "Wrong word"~
         label.textAlignment = .center
         label.layer.cornerRadius = 5
@@ -29,11 +30,11 @@ class FeedViewController: UIViewController, Coordinated {
 
     lazy var greenLabel: UILabel = {
         let label = UILabel(frame: CGRect(x: self.view.center.x-75, y: 600, width: 150, height: 50))
-        label.layer.backgroundColor = UIColor.green.cgColor
+        label.layer.backgroundColor = UIColor.systemGreen.cgColor
         label.text = "Correct word"~
         label.textAlignment = .center
         label.layer.cornerRadius = 5
-        label.textColor = .black
+        label.textColor = .white
         return label
     }()
 
@@ -60,13 +61,13 @@ class FeedViewController: UIViewController, Coordinated {
 
     lazy var postButton1: CustomButton = {
         let btn = CustomButton(title: "Chuck Norris Random Joke"~, titleColor: .white, onTap: openRandomJokes)
-        btn.backgroundColor = .systemRed
+        btn.backgroundColor = AppColor.accent
         return btn
     }()
 
     lazy var postButton2: CustomButton = {
         let btn = CustomButton(title: "Search my joke"~, titleColor: .white, onTap: openSearchJoke)
-        btn.backgroundColor = .systemGray
+        btn.backgroundColor = AppColor.accent2
         return btn
     }()
 
@@ -91,7 +92,7 @@ class FeedViewController: UIViewController, Coordinated {
         self.title = "Feed"~
         setupViews()
         setupConstraints()
-        buttonsView.spacing = 10
+        buttonsView.distribution = .equalSpacing
         let infoButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(infoTapped))
         navigationItem.rightBarButtonItem = infoButton
     }
@@ -113,6 +114,15 @@ class FeedViewController: UIViewController, Coordinated {
             make.height.equalTo(210)
             make.leading.equalTo(view.snp.leading).offset(20)
         }
+        
+        postButton1.snp.makeConstraints { (make) in
+            make.height.equalTo(100)
+        }
+        
+        postButton2.snp.makeConstraints { (make) in
+            make.height.equalTo(100)
+        }
+        
 
         firstTextfield.snp.makeConstraints { (make) in
             make.top.equalTo(buttonsView.snp.bottom).offset(50)

@@ -15,7 +15,6 @@
 //MARK: -Views
 
 //Sign Up Controller
-
 "Your e-mail *" = "Ваш e-mail *";
 "* Fields are neccessary to fill" = "* Поля обязательные для заполнения";
 "Sign in with e-mail" = "Регистрация по e-mail";
@@ -68,8 +67,8 @@
 "Pajama Kid" = "Парень в пижаме";
 "Enter status" = "Введите статус";
 "Set status" = "Установить статус";
-//Liked Controller
 
+//Liked Controller
 "Liked posts" = "Лайки";
 
 //Login Controller
@@ -79,3 +78,8 @@
 "Password" = "Пароль";
 "Incorrect login or password" = "Неправильный логин или пароль";
 "Generate password" = "GСгенерировать пароль";
+
+//Alerts
+"Fill all neccessary fields" = "Заполните все необходимые поля";
+"Warning:" = "Внимание:";
+"Email is not correct!" = "Некорректный e-mail!";

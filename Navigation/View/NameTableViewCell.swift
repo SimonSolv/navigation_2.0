@@ -12,6 +12,7 @@ class NameTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         // Initialization code
     }
 

@@ -12,7 +12,7 @@ class InfoViewController: UIViewController {
         let label = UILabel()
         label.font = .boldSystemFont(ofSize: 18)
         label.text = "no data received"~
-        label.backgroundColor = .white
+        label.backgroundColor = AppColor.background
         label.textAlignment = .center
         label.layer.cornerRadius = 10
         label.clipsToBounds = true
@@ -23,19 +23,15 @@ class InfoViewController: UIViewController {
     lazy var tableView: UITableView = {
         var table = UITableView()
         table.frame = .zero
+        table.backgroundColor = AppColor.background
         return table
     }()
-    
-    var cell: UITableViewCell {
-        let cell = UITableViewCell()
-        return cell
-    }
     
     lazy var planetLabel: UILabel = {
         let label = UILabel()
         label.font = .boldSystemFont(ofSize: 18)
         label.text = "no data received"~
-        label.backgroundColor = .white
+        label.backgroundColor = AppColor.background
         label.textAlignment = .center
         label.layer.cornerRadius = 10
         label.clipsToBounds = true
@@ -45,7 +41,7 @@ class InfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .lightGray
+        self.view.backgroundColor = .systemGray6
         self.title = "Info"~
         setupViews()
         setupConstraints()
@@ -137,6 +133,7 @@ extension InfoViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: NameTableViewCell.identifier, for: indexPath) as! NameTableViewCell
+        cell.backgroundColor = AppColor.background
         cell.textLabel?.text = self.citizens[indexPath.row]
         return cell
     }

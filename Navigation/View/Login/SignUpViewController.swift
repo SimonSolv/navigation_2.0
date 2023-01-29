@@ -38,7 +38,7 @@ class SignUpViewController: UIViewController {
        let label = UILabel()
         label.text = "Sign in with e-mail"~
         label.font = .boldSystemFont(ofSize: 28)
-        label.textColor = .black
+        label.textColor = AppColor.text
         label.textAlignment = .center
         return label
     }()
@@ -71,7 +71,7 @@ class SignUpViewController: UIViewController {
     }()
     
     lazy var signInButton: CustomButton = {
-        var btn: CustomButton = CustomButton(title: "Sign in"~, titleColor: .white, onTap: self.createUserButtonTapped)
+        var btn: CustomButton = CustomButton(title: "Sign in"~, titleColor: AppColor.text, onTap: self.createUserButtonTapped)
         btn.setStyle(style: .login)
         return btn
     }()
@@ -79,7 +79,7 @@ class SignUpViewController: UIViewController {
 //MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = AppColor.background
         setupViews()
         setupConstraints()
         loginTextField.keyboardType = .emailAddress

@@ -46,7 +46,7 @@ class AppCoordinator: CoordinatorProtocol {
         let navLogin = UINavigationController(rootViewController: login!)
         let navLiked = UINavigationController(rootViewController: liked!)
         guard let controller = self.controller else {return}
-        controller.tabBar.backgroundColor = .white
+        controller.tabBar.backgroundColor = AppColor.tabBar
         if loginType {
             controller.viewControllers = [navFeed, navProfile, navLiked]
         } else {

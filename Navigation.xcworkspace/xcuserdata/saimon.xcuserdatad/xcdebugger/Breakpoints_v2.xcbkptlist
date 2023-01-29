@@ -78,8 +78,8 @@
             filePath = "Navigation/View/Profile/Cells/PhotosTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
             landmarkName = "setupConstraints()"
             landmarkType = "7">
          </BreakpointContent>
@@ -88,14 +88,14 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "27AD9605-A195-4F1D-9406-1C5F4484D23C"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Navigation/View/Login/LoginViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "393"
-            endingLineNumber = "393"
+            startingLineNumber = "388"
+            endingLineNumber = "388"
             landmarkName = "googleAuthLogin()"
             landmarkType = "7">
          </BreakpointContent>

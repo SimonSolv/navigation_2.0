@@ -49,6 +49,5 @@ enum ModuleType {
     case feed
     case profile
     case login
-    case liked
-    
+    case liked    
 }
