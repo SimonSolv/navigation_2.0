@@ -26,9 +26,7 @@ class BrudForceOperation: Operation {
         super.init()
     }
     override func main() {
-      //  print("block started")
         doBlock()
-      //  print ("block ended")
     }
 }
 
@@ -42,7 +40,7 @@ struct UserInfo {
 }
 
 func loginAlert() -> UIAlertController {
-    let alertVC = UIAlertController(title: "Warning:", message: "Fill all neccessary fields", preferredStyle: .alert )
+    let alertVC = UIAlertController(title: "Warning:"~, message: "Fill all neccessary fields"~, preferredStyle: .alert )
     let okAction = UIAlertAction(title: "Ok", style: .default, handler: {(_: UIAlertAction!) in print("Ok Action")})
     alertVC.addAction(okAction)
     return alertVC

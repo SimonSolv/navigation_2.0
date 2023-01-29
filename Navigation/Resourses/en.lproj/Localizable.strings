@@ -79,6 +79,11 @@
 "Incorrect login or password" = "Incorrect login or password";
 "Generate password" = "Generate password";
 
+//Alerts
+
+"Fill all neccessary fields" = "Fill all neccessary fields";
+"Warning:" = "Warning:";
+"Warning" = "Warning";
 
 
 
