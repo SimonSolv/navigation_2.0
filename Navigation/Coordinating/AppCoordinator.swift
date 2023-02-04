@@ -3,16 +3,18 @@ import UIKit
 
 enum Event {
     case loginSuccess
-    case secondButtonTapped
+    case presentSignIn
+    case presentShowJoke
+    case presentSearchJokes
+    case presentGallery
+    case presentInfo
 }
 
 class AppCoordinator: CoordinatorProtocol {
-    var controller: UITabBarController?
-    var factory: ModuleFactory?
-    let storage = PhotoStorage()
     
-    var coordinators: [CoordinatorProtocol]?
-
+    var controller: UITabBarController?
+    var factory: FactoryProtocol?
+    let storage = PhotoStorage()
     
     required init(controller: UITabBarController) {
         self.controller = controller
@@ -23,8 +25,23 @@ class AppCoordinator: CoordinatorProtocol {
         case .loginSuccess:
             let profileController = self.factory?.makeModule(type: .profile) as! ProfileViewController
             iniciator.navigationController?.pushViewController(profileController, animated: false)
-        case .secondButtonTapped:
-            return
+        case .presentSignIn:
+            let signUiController = SignUpViewController()
+            let delegate = LoginInspector()
+            signUiController.delegate = delegate
+            iniciator.present(signUiController, animated: true)
+        case .presentGallery:
+            let controller = GalleryViewController()
+            iniciator.navigationController?.pushViewController(controller, animated: true)
+        case .presentSearchJokes:
+            let controller = SearchJokeViewController(style: .grouped)
+            iniciator.navigationController?.pushViewController(controller, animated: true)
+        case .presentShowJoke:
+            let controller = JokeViewController()
+            iniciator.navigationController?.pushViewController(controller, animated: true)
+        case .presentInfo:
+            let controller = InfoViewController()
+            iniciator.navigationController?.pushViewController(controller, animated: true)
         }
     }
 
@@ -47,7 +64,7 @@ class AppCoordinator: CoordinatorProtocol {
         let navLiked = UINavigationController(rootViewController: liked!)
         guard let controller = self.controller else {return}
         controller.tabBar.backgroundColor = .white
-        if loginType {
+        if loginType == true {
             controller.viewControllers = [navFeed, navProfile, navLiked]
         } else {
             controller.viewControllers = [navFeed, navLogin, navLiked]

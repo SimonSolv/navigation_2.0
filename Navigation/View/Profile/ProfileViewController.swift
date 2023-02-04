@@ -26,7 +26,7 @@ class ProfileViewController: UIViewController, PhotosTableViewCellDelegate, Coor
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .lightGray
+        view.backgroundColor = .systemGray4
         setupTableView()
         setupConstraints()
         getData()
@@ -55,8 +55,7 @@ class ProfileViewController: UIViewController, PhotosTableViewCellDelegate, Coor
     }
 
     func openGallery() {
-        let controller = GalleryViewController()
-        navigationController?.pushViewController(controller, animated: true)
+        coordinator?.eventAction(event: .presentGallery, iniciator: self)
     }
 
 //    private func fetchNews(completion: @escaping (Result<Data, NetworkError>) -> Void) {

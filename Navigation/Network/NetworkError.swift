@@ -1,9 +1,3 @@
-//
-//  NetworkError.swift
-//  Navigation
-//
-//  Created by Simon Pegg on 23.11.2022.
-//
 
 import Foundation
 

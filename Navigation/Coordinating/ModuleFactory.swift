@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-final class ModuleFactory: FabricProtocol {
+final class ModuleFactory: FactoryProtocol {
     
     var coordinator: CoordinatorProtocol?
     
@@ -40,7 +40,7 @@ final class ModuleFactory: FabricProtocol {
     }
 }
 
-protocol FabricProtocol: AnyObject {
+protocol FactoryProtocol: AnyObject {
     var coordinator: CoordinatorProtocol? { get set }
     func makeModule(type: ModuleType) -> UIViewController
 }
@@ -50,5 +50,4 @@ enum ModuleType {
     case profile
     case login
     case liked
-    
 }

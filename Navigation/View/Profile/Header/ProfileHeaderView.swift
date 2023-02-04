@@ -1,5 +1,6 @@
 import UIKit
 import SnapKit
+
 class ProfileHeaderView: UIView {
     
     static let identifier = "ProfileHeader"
@@ -74,7 +75,7 @@ class ProfileHeaderView: UIView {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tap))
 //        addGestureRecognizer(tapGesture)
         statusLabel.text = status
-        backgroundColor = .systemGray6
+        backgroundColor = .systemGray4
         avatarImageView.addGestureRecognizer(tapGesture)
         
         setupViews()

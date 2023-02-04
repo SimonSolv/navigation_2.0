@@ -1,18 +1,12 @@
 import SnapKit
 import UIKit
-import Firebase
-import GoogleSignIn
 import RealmSwift
-
-
 
 class LoginViewController: UIViewController, Coordinated {
     
-    var inspector = LoginInspector()
+    var inspector: LoginViewControllerDelegate!
     static let identifier = "Log In"
-    let signInConfig = GIDConfiguration.init(clientID: "822406758404-fev69ian0g95hb9jcgve9pisak35s5bl.apps.googleusercontent.com")
     var myUser = UserInfo()
-    var googleSignIn = GIDSignIn.sharedInstance
     var coordinator: CoordinatorProtocol?
     private var userName: String?
     private var userPassword: String?
@@ -20,9 +14,6 @@ class LoginViewController: UIViewController, Coordinated {
     var brudPass = ""
     let realm = try! Realm()
     var users: Results<Credentials>?
-    let handle = Auth.auth().addStateDidChangeListener { auth, user in
-            // ...
-    }
     
 
 //MARK: Views
@@ -30,8 +21,6 @@ class LoginViewController: UIViewController, Coordinated {
         let label = CustomButton(title: "Sign in with e-mail"~, titleColor: .systemBlue, onTap: self.signInButtonTapped)
         return label
     }()
-    
-    lazy var googleSignInButton = GIDSignInButton()
     
     lazy var passwordToUnlock: String = ""
 
@@ -111,7 +100,6 @@ class LoginViewController: UIViewController, Coordinated {
             self.indicatorView.isHidden = true
             self.indicatorView.stopAnimating()
         }
-
     }
     
     func createPasswordButtonTapped() {
@@ -181,19 +169,12 @@ class LoginViewController: UIViewController, Coordinated {
 //MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        inspector = LoginInspector()
         users = realm.objects(Credentials.self)
         setupViews()
         setupConstraits()
         loginTextField.keyboardType = .emailAddress
-      //  googleSignInButton.addTarget(self, action: #selector(googleAuthLogin), for: .touchUpInside)
-     //   signInLineButton.addTarget(self, action: #selector(signInButtonTapped), for: .touchUpInside)
-
-       // print("User name is \(myUser.firstName)")
     }
-    
-
-
-
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -210,7 +191,7 @@ class LoginViewController: UIViewController, Coordinated {
     }
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        Auth.auth().removeStateDidChangeListener(handle)
+
         NotificationCenter.default.removeObserver(self,
                                                   name: UIResponder.keyboardWillShowNotification,
                                                   object: nil)
@@ -230,7 +211,6 @@ class LoginViewController: UIViewController, Coordinated {
 //        contentView.addSubview(createPasswordButton)
 //        wrongPswdView.isHidden = true
         
-        contentView.addSubview(googleSignInButton)
         contentView.addSubview(inputSourceView)
         inputSourceView.addSubview(loginTextField)
         inputSourceView.addSubview(passwordTextField)
@@ -285,12 +265,6 @@ class LoginViewController: UIViewController, Coordinated {
             make.trailing.equalTo(inputSourceView.snp.trailing)
         }
         
-        googleSignInButton.snp.makeConstraints { (make) in
-            make.top.equalTo(signInLineButton.snp.bottom).offset(5)
-            make.height.equalTo(30)
-            make.width.equalTo(signInLineButton.snp.width)
-            make.centerX.equalTo(view.snp.centerX)
-        }
         
 //        wrongPswdView.snp.makeConstraints { (make) in
 //            make.top.equalTo(loginButton.snp.bottom).offset(5)
@@ -387,35 +361,22 @@ extension LoginViewController {
 //MARK: Login and Sign in logic
 extension LoginViewController {
     
-    @objc func googleAuthLogin() {
-        let googleConfig = GIDConfiguration(clientID: "453388259695-17omfcqm8fr926fcehguloregfpm1rni.apps.googleusercontent.com")
-        self.googleSignIn.signIn(with: googleConfig, presenting: self) { user, error in
-            if error == nil {
-                guard let user = user else {
-                    print("Uh oh. The user cancelled the Google login.")
-                    return
-                }
-                self.myUser.id = user.userID ?? ""
-                self.myUser.idToken = user.authentication.idToken ?? ""
-                self.myUser.firstName = user.profile?.givenName ?? ""
-                self.myUser.lastName = user.profile?.familyName ?? ""
-                self.myUser.email = user.profile?.email ?? ""
-                self.myUser.googleProfilePicURL = user.profile?.imageURL(withDimension: 150)?.absoluteString ?? ""
-            }
-        }
-    }
-    
     func signInButtonTapped() {
-        let controller = SignUpViewController()
-        controller.delegate = self.inspector
-        self.present(controller, animated: true)
+        coordinator?.eventAction(event: .presentSignIn, iniciator: self)
+
     }
     
     func loginButtonTapped() {
         if self.loginTextField.text != "" && self.passwordTextField.text != "" {
-            inspector.checkCredentials(email: self.loginTextField.text!, password: self.passwordTextField.text!, iniciator: self, realm: true)
+            let answer = inspector.checkCredentials(email: self.loginTextField.text!, password: self.passwordTextField.text!)
+            if answer == .success {
+                coordinator?.eventAction(event: .loginSuccess, iniciator: self)
+            } else {
+                self.present(CustomWarnAlert(message: answer.rawValue, actionHandler: nil), animated: true)
+            }
+            
         } else {
-            self.present(loginAlert(), animated: true, completion: nil)
+            self.present(CustomWarnAlert(message: "Fill all fields"~, actionHandler: nil), animated: true, completion: nil)
             return
         }
     }

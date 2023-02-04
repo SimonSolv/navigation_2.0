@@ -135,7 +135,6 @@ func getUsers(completion: ((_ dataText: String?) -> Void)?) {
         do {
             let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]]
             let answer: String = (json![json?.randomElement()!["id"] as! Int]["title"] as? String)!
-            //print(answer)
             completion?(answer)
             return
         } catch {

@@ -11,16 +11,18 @@
 		CE0F680629784574007B007F /* LocalizationShortcut.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0F680529784574007B007F /* LocalizationShortcut.swift */; };
 		CE0F68092978471E007B007F /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = CE0F68082978471E007B007F /* Localizable.stringsdict */; };
 		CE0F680C297847A9007B007F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE0F680E297847A9007B007F /* Localizable.strings */; };
-		CE1687AF2923F61E0088F724 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE1687AE2923F61E0088F724 /* GoogleService-Info.plist */; };
+		CE0F68392986CEE2007B007F /* NavigationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0F68382986CEE2007B007F /* NavigationTests.swift */; };
 		CE1687B12926A7230088F724 /* LikedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1687B02926A7230088F724 /* LikedViewController.swift */; };
 		CE1687B42926ABD30088F724 /* Navigation.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE1687B22926ABD20088F724 /* Navigation.xcdatamodeld */; };
 		CE1687B62926AC4D0088F724 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1687B52926AC4D0088F724 /* CoreDataManager.swift */; };
 		CE1687B9292E8F030088F724 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1687B8292E8F030088F724 /* NetworkManager.swift */; };
 		CE1687BB292E8FFD0088F724 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1687BA292E8FFD0088F724 /* NetworkError.swift */; };
+		CE2D3494298C2DBC002ABB92 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE2D3493298C2DBC002ABB92 /* Main.storyboard */; };
 		CE46997328F9C307006CCD35 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46997228F9C307006CCD35 /* NetworkService.swift */; };
 		CE524CFC26FCFC6C009C182B /* PhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE524CFB26FCFC6C009C182B /* PhotosTableViewCell.swift */; };
 		CE524CFF26FE47E3009C182B /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE524CFE26FE47E3009C182B /* PhotoCollectionViewCell.swift */; };
 		CE545B5228E357B90027C88A /* ModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE545B5128E357B90027C88A /* ModuleFactory.swift */; };
+		CE7D6EF42986DD6E00406CD6 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CE7D6EF32986DD6E00406CD6 /* SnapKit */; };
 		CE8485C6290EEC800008CE5D /* CheckerServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8485C5290EEC800008CE5D /* CheckerServiceProtocol.swift */; };
 		CE8D6E0D26A3069000A25380 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8D6E0C26A3069000A25380 /* AppDelegate.swift */; };
 		CE8D6E0F26A3069000A25380 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8D6E0E26A3069000A25380 /* SceneDelegate.swift */; };
@@ -52,6 +54,16 @@
 		CED5A04927F7704500F3CD26 /* FeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED5A04827F7704500F3CD26 /* FeedModel.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		CE0F683A2986CEE2007B007F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CE8D6E0126A3069000A25380 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CE8D6E0826A3069000A25380;
+			remoteInfo = Navigation;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		6900C6EB2B998FCB30BAA729 /* Pods-Navigation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Navigation.release.xcconfig"; path = "Target Support Files/Pods-Navigation/Pods-Navigation.release.xcconfig"; sourceTree = "<group>"; };
 		87C8C108E9E3CDAE8FF0EE04 /* Pods_Navigation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Navigation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,12 +73,15 @@
 		CE0F68082978471E007B007F /* Localizable.stringsdict */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; path = Localizable.stringsdict; sourceTree = "<group>"; };
 		CE0F680D297847A9007B007F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CE0F680F297847AC007B007F /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
-		CE1687AE2923F61E0088F724 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CE0F68362986CEE2007B007F /* NavigationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NavigationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE0F68382986CEE2007B007F /* NavigationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTests.swift; sourceTree = "<group>"; };
+		CE0F68432986DC37007B007F /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE1687B02926A7230088F724 /* LikedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedViewController.swift; sourceTree = "<group>"; };
 		CE1687B32926ABD30088F724 /* Navigation.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Navigation.xcdatamodel; sourceTree = "<group>"; };
 		CE1687B52926AC4D0088F724 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		CE1687B8292E8F030088F724 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		CE1687BA292E8FFD0088F724 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		CE2D3493298C2DBC002ABB92 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		CE46997228F9C307006CCD35 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		CE524CFB26FCFC6C009C182B /* PhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTableViewCell.swift; sourceTree = "<group>"; };
 		CE524CFE26FE47E3009C182B /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -104,10 +119,18 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		CE0F68332986CEE2007B007F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CE8D6E0626A3069000A25380 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE7D6EF42986DD6E00406CD6 /* SnapKit in Frameworks */,
 				80E82B75024F12407826DED2 /* Pods_Navigation.framework in Frameworks */,
 				CEBE015B27496A74009CFB06 /* iOSIntPackage in Frameworks */,
 			);
@@ -128,9 +151,18 @@
 		C2C8A1266C2266EF63C7DE98 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CE0F68432986DC37007B007F /* SnapKit.framework */,
 				87C8C108E9E3CDAE8FF0EE04 /* Pods_Navigation.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CE0F68372986CEE2007B007F /* NavigationTests */ = {
+			isa = PBXGroup;
+			children = (
+				CE0F68382986CEE2007B007F /* NavigationTests.swift */,
+			);
+			path = NavigationTests;
 			sourceTree = "<group>";
 		};
 		CE1687B7292E8EEE0088F724 /* Network */ = {
@@ -207,7 +239,6 @@
 			children = (
 				CE8D6E1726A3069900A25380 /* LaunchScreen.storyboard */,
 				CE8D6E1526A3069900A25380 /* Assets.xcassets */,
-				CE1687AE2923F61E0088F724 /* GoogleService-Info.plist */,
 				CE0F68082978471E007B007F /* Localizable.stringsdict */,
 				CE0F680E297847A9007B007F /* Localizable.strings */,
 			);
@@ -273,29 +304,32 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		CE545B4F28E356A00027C88A /* Module */ = {
+		CE545B4F28E356A00027C88A /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				CECEF9DE28E0C07D00F87248 /* LoginInspector.swift */,
 				CECEF9DC28E0C07D00F87248 /* Checker.swift */,
 			);
-			path = Module;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		CE8D6E0026A3069000A25380 = {
 			isa = PBXGroup;
 			children = (
 				CE8D6E0B26A3069000A25380 /* Navigation */,
+				CE0F68372986CEE2007B007F /* NavigationTests */,
 				CE8D6E0A26A3069000A25380 /* Products */,
 				C2C8A1266C2266EF63C7DE98 /* Frameworks */,
 				18FC24450984849CD8C6AE26 /* Pods */,
 			);
 			sourceTree = "<group>";
+			usesTabs = 0;
 		};
 		CE8D6E0A26A3069000A25380 /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				CE8D6E0926A3069000A25380 /* Navigation.app */,
+				CE0F68362986CEE2007B007F /* NavigationTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -310,11 +344,12 @@
 				CE1687BC292E92680088F724 /* Models */,
 				CE545B4D28E356640027C88A /* Protocols */,
 				CE1687B7292E8EEE0088F724 /* Network */,
-				CE545B4F28E356A00027C88A /* Module */,
+				CE545B4F28E356A00027C88A /* ViewModel */,
 				CE545B4E28E356830027C88A /* View */,
 				CE545B4C28E3564C0027C88A /* Coordinating */,
 				CECEF9D828E0C06D00F87248 /* CustomUI */,
 				CE1687C2292E93730088F724 /* Resourses */,
+				CE2D3493298C2DBC002ABB92 /* Main.storyboard */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -331,6 +366,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		CE0F68352986CEE2007B007F /* NavigationTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE0F683C2986CEE2007B007F /* Build configuration list for PBXNativeTarget "NavigationTests" */;
+			buildPhases = (
+				CE0F68322986CEE2007B007F /* Sources */,
+				CE0F68332986CEE2007B007F /* Frameworks */,
+				CE0F68342986CEE2007B007F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CE0F683B2986CEE2007B007F /* PBXTargetDependency */,
+			);
+			name = NavigationTests;
+			packageProductDependencies = (
+			);
+			productName = NavigationTests;
+			productReference = CE0F68362986CEE2007B007F /* NavigationTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		CE8D6E0826A3069000A25380 /* Navigation */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE8D6E1D26A3069900A25380 /* Build configuration list for PBXNativeTarget "Navigation" */;
@@ -349,6 +404,7 @@
 			name = Navigation;
 			packageProductDependencies = (
 				CEBE015A27496A74009CFB06 /* iOSIntPackage */,
+				CE7D6EF32986DD6E00406CD6 /* SnapKit */,
 			);
 			productName = Navigation;
 			productReference = CE8D6E0926A3069000A25380 /* Navigation.app */;
@@ -360,9 +416,13 @@
 		CE8D6E0126A3069000A25380 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1240;
+				LastSwiftUpdateCheck = 1400;
 				LastUpgradeCheck = 1240;
 				TargetAttributes = {
+					CE0F68352986CEE2007B007F = {
+						CreatedOnToolsVersion = 14.0.1;
+						TestTargetID = CE8D6E0826A3069000A25380;
+					};
 					CE8D6E0826A3069000A25380 = {
 						CreatedOnToolsVersion = 12.4;
 					};
@@ -380,25 +440,34 @@
 			mainGroup = CE8D6E0026A3069000A25380;
 			packageReferences = (
 				CEBE015927496A74009CFB06 /* XCRemoteSwiftPackageReference "iOSIntPackage" */,
+				CE7D6EF22986DD6E00406CD6 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = CE8D6E0A26A3069000A25380 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				CE8D6E0826A3069000A25380 /* Navigation */,
+				CE0F68352986CEE2007B007F /* NavigationTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		CE0F68342986CEE2007B007F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CE8D6E0726A3069000A25380 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				CE0F680C297847A9007B007F /* Localizable.strings in Resources */,
+				CE2D3494298C2DBC002ABB92 /* Main.storyboard in Resources */,
 				CE8D6E1926A3069900A25380 /* LaunchScreen.storyboard in Resources */,
 				CE0F68092978471E007B007F /* Localizable.stringsdict in Resources */,
-				CE1687AF2923F61E0088F724 /* GoogleService-Info.plist in Resources */,
 				CE8D6E1626A3069900A25380 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -466,6 +535,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		CE0F68322986CEE2007B007F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE0F68392986CEE2007B007F /* NavigationTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CE8D6E0526A3069000A25380 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -511,6 +588,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		CE0F683B2986CEE2007B007F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CE8D6E0826A3069000A25380 /* Navigation */;
+			targetProxy = CE0F683A2986CEE2007B007F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		CE0F680E297847A9007B007F /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
@@ -533,6 +618,48 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		CE0F683D2986CEE2007B007F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Navigation.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Navigation";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = TDYKKCNQAF;
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/Pods/Firebase/Core/Sources";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SimonApps.NavigationTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Navigation.app/Navigation";
+			};
+			name = Debug;
+		};
+		CE0F683E2986CEE2007B007F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Navigation.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Navigation";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = TDYKKCNQAF;
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/Pods/Firebase/Core/Sources";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SimonApps.NavigationTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Navigation.app/Navigation";
+			};
+			name = Release;
+		};
 		CE8D6E1B26A3069900A25380 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -694,6 +821,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		CE0F683C2986CEE2007B007F /* Build configuration list for PBXNativeTarget "NavigationTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE0F683D2986CEE2007B007F /* Debug */,
+				CE0F683E2986CEE2007B007F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		CE8D6E0426A3069000A25380 /* Build configuration list for PBXProject "Navigation" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -715,6 +851,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		CE7D6EF22986DD6E00406CD6 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
 		CEBE015927496A74009CFB06 /* XCRemoteSwiftPackageReference "iOSIntPackage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/TrueMax/iOSIntPackage";
@@ -726,6 +870,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CE7D6EF32986DD6E00406CD6 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE7D6EF22986DD6E00406CD6 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
 		CEBE015A27496A74009CFB06 /* iOSIntPackage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CEBE015927496A74009CFB06 /* XCRemoteSwiftPackageReference "iOSIntPackage" */;

@@ -3,6 +3,8 @@ import SnapKit
 
 class JokeViewController: UIViewController {
     
+    let delegate: ChuckJokesGetter = ChuckJokesGetter()
+    
     lazy var jokeLabel: UILabel = {
         let label = UILabel()
         label.font = .boldSystemFont(ofSize: 22)
@@ -20,7 +22,7 @@ class JokeViewController: UIViewController {
     
     lazy var refreshButton: UIButton = {
         let button = CustomButton(title: "Get Joke"~, titleColor: .black, onTap: {
-            getRandomJoke(completion: { joke in
+            self.delegate.getRandomJoke(completion: { joke in
                 DispatchQueue.main.async {
                     self.infoButton.isEnabled = true
                     if let joke = joke {

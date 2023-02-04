@@ -3,6 +3,7 @@ import UIKit
 import RealmSwift
 
 extension String {
+    
     var digits:      String { return "0123456789" }
     var lowercase:   String { return "abcdefghijklmnopqrstuvwxyz" }
     var uppercase:   String { return "ABCDEFGHIJKLMNOPQRSTUVWXYZ" }

@@ -2,8 +2,10 @@ import UIKit
 
 class SearchJokeViewController: UITableViewController, UISearchBarDelegate {
     
+    let delegate = ChuckJokesGetter()
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar)  {
-        getJokeList(searchString: searchController.searchBar.text!) { jokeArray in
+        self.delegate.getJokeList(searchString: searchController.searchBar.text!) { jokeArray in
             DispatchQueue.main.async {
                 self.jokes = jokeArray ?? []
                 self.tableView.reloadData()
@@ -21,7 +23,6 @@ class SearchJokeViewController: UITableViewController, UISearchBarDelegate {
     
     override init(style: UITableView.Style) {
         super.init(style: style)
-        // Custom initialization
     }
     
     required init?(coder: NSCoder) {

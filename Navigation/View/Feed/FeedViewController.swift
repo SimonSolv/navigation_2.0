@@ -134,20 +134,17 @@ class FeedViewController: UIViewController, Coordinated {
     }
 
     @objc func infoTapped() {
-        let controller = InfoViewController()
-        navigationController?.pushViewController(controller, animated: true)
+        
+
 
     }
     
     func openRandomJokes() {
-        let controller = JokeViewController()
-        navigationController?.pushViewController(controller, animated: true)
-        controller.titleName = titleInfo.title
+        coordinator?.eventAction(event: .presentShowJoke, iniciator: self)
     }
     
     func openSearchJoke() {
-        let controller = SearchJokeViewController(style: .grouped)
-        navigationController?.pushViewController(controller, animated: true)
+        coordinator?.eventAction(event: .presentSearchJokes, iniciator: self)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -39,12 +39,12 @@ func requestSession(address: String) {
                 return
             }
             let printAnswer = myanswer.reversed()
-            printAnswer.forEach { print("\($0): \($1)") }
+//            printAnswer.forEach { print("\($0): \($1)") }
         } catch {
             print (error)
         }
-        print ("StstusCode = \((responce as! HTTPURLResponse).statusCode)")
-        print ("AllHeaderFields = \((responce as! HTTPURLResponse).allHeaderFields)")
+//        print ("StstusCode = \((responce as! HTTPURLResponse).statusCode)")
+//        print ("AllHeaderFields = \((responce as! HTTPURLResponse).allHeaderFields)")
         
     })
     task.resume()

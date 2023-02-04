@@ -1,8 +1,6 @@
 import Foundation
 import UIKit
 
-
-
 protocol CoordinatorProtocol {
     var controller: UITabBarController? {get set}
 
