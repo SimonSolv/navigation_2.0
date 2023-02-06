@@ -70,7 +70,7 @@ class PhotosTableViewCell: UITableViewCell {
             make.top.equalTo(photosLabel.snp.bottom).offset(12)
             make.leading.equalTo(contentView.snp.leading)
             make.trailing.equalTo(contentView.snp.trailing)
-  //          make.height.equalTo(60)
+            make.height.equalTo(60)
             make.bottom.equalTo(contentView.snp.bottom).offset(-12)
         }
     }

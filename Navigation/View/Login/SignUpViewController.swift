@@ -1,22 +1,10 @@
-//
-//  SignInViewController.swift
-//  Navigation
-//
-//  Created by Simon Pegg on 26.10.2022.
-//
-
 import UIKit
 import SnapKit
-import FirebaseAuth
 
 class SignUpViewController: UIViewController {
     private var email: String?
     private var password: String?
     weak var delegate: LoginViewControllerDelegate?
-    
-    let handle = Auth.auth().addStateDidChangeListener { auth, user in
-       
-    }
     
     lazy var loginLabel:UILabel = {
        let label = UILabel()

@@ -1,18 +1,12 @@
 import SnapKit
 import UIKit
-import Firebase
-import GoogleSignIn
 import RealmSwift
-
-
 
 class LoginViewController: UIViewController, Coordinated {
     
     var inspector = LoginInspector()
     static let identifier = "Log In"
-    let signInConfig = GIDConfiguration.init(clientID: "822406758404-fev69ian0g95hb9jcgve9pisak35s5bl.apps.googleusercontent.com")
     var myUser = UserInfo()
-    var googleSignIn = GIDSignIn.sharedInstance
     var coordinator: CoordinatorProtocol?
     private var userName: String?
     private var userPassword: String?
@@ -20,9 +14,7 @@ class LoginViewController: UIViewController, Coordinated {
     var brudPass = ""
     let realm = try! Realm()
     var users: Results<Credentials>?
-    let handle = Auth.auth().addStateDidChangeListener { auth, user in
-            // ...
-    }
+    private let biometricIDAuthentification = LocalAuthorizationService()
     
 
 //MARK: Views
@@ -31,7 +23,13 @@ class LoginViewController: UIViewController, Coordinated {
         return label
     }()
     
-    lazy var googleSignInButton = GIDSignInButton()
+    lazy var useAuthButton: UIButton = {
+        let btn = UIButton()
+        btn.setTitle("Press to use biometry", for: .normal)
+        btn.setTitleColor(UIColor.systemBlue, for: .normal)
+        btn.addTarget(self, action: #selector(authButtonTapped), for: .touchUpInside)
+        return btn
+    }()
     
     lazy var passwordToUnlock: String = ""
 
@@ -186,17 +184,16 @@ class LoginViewController: UIViewController, Coordinated {
         setupConstraits()
         loginTextField.keyboardType = .emailAddress
       //  googleSignInButton.addTarget(self, action: #selector(googleAuthLogin), for: .touchUpInside)
-     //   signInLineButton.addTarget(self, action: #selector(signInButtonTapped), for: .touchUpInside)
-
-       // print("User name is \(myUser.firstName)")
     }
-    
-
-
-
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        biometricIDAuthentification.canEvaluate {result, type, error in
+            guard result else {
+                return
+            }
+            self.setupAuthButton(type: type)
+        }
 
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyboardWillShow(notification:)),
@@ -210,7 +207,6 @@ class LoginViewController: UIViewController, Coordinated {
     }
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        Auth.auth().removeStateDidChangeListener(handle)
         NotificationCenter.default.removeObserver(self,
                                                   name: UIResponder.keyboardWillShowNotification,
                                                   object: nil)
@@ -226,11 +222,11 @@ class LoginViewController: UIViewController, Coordinated {
         contentView.addSubview(logoImageView)
         contentView.addSubview(loginButton)
 
+
 //        contentView.addSubview(wrongPswdView)
 //        contentView.addSubview(createPasswordButton)
 //        wrongPswdView.isHidden = true
-        
-        contentView.addSubview(googleSignInButton)
+    
         contentView.addSubview(inputSourceView)
         inputSourceView.addSubview(loginTextField)
         inputSourceView.addSubview(passwordTextField)
@@ -239,6 +235,7 @@ class LoginViewController: UIViewController, Coordinated {
         
         indicatorView.isHidden = true
         contentView.addSubview(signInLineButton)
+        contentView.addSubview(useAuthButton)
     }
     
     func setupConstraits() {
@@ -251,14 +248,14 @@ class LoginViewController: UIViewController, Coordinated {
         }
         
         logoImageView.snp.makeConstraints { (make) in
-            make.top.equalTo(contentView.snp.top).offset(120)
+            make.top.equalTo(contentView.snp.top).offset(view.bounds.height/7)
             make.centerX.equalTo(contentView.snp.centerX)
             make.width.equalTo(100)
             make.height.equalTo(100)
         }
         
         inputSourceView.snp.makeConstraints { (make) in
-            make.top.equalTo(logoImageView.snp.bottom).offset(100)
+            make.top.equalTo(logoImageView.snp.bottom).offset(view.bounds.height/7)
             make.leading.equalTo(contentView.snp.leading).offset(20)
             make.width.equalTo(view.bounds.width - 40)
             make.height.equalTo(100)
@@ -279,17 +276,10 @@ class LoginViewController: UIViewController, Coordinated {
         }
         
         loginButton.snp.makeConstraints { (make) in
-            make.top.equalTo(contentView.snp.top).offset(450)
+            make.top.equalTo(passwordTextField.snp.bottom).offset(20)
             make.height.equalTo(50)
             make.leading.equalTo(inputSourceView.snp.leading)
             make.trailing.equalTo(inputSourceView.snp.trailing)
-        }
-        
-        googleSignInButton.snp.makeConstraints { (make) in
-            make.top.equalTo(signInLineButton.snp.bottom).offset(5)
-            make.height.equalTo(30)
-            make.width.equalTo(signInLineButton.snp.width)
-            make.centerX.equalTo(view.snp.centerX)
         }
         
 //        wrongPswdView.snp.makeConstraints { (make) in
@@ -308,8 +298,16 @@ class LoginViewController: UIViewController, Coordinated {
         signInLineButton.snp.makeConstraints { (make) in
             make.centerX.equalTo(view.snp.centerX)
             make.width.equalTo(200)
-            make.top.equalTo(loginButton.snp.bottom).offset(15)
+            make.top.equalTo(loginButton.snp.bottom).offset(10)
             make.height.equalTo(30)
+        }
+        
+        useAuthButton.snp.makeConstraints { (make) in
+            make.centerX.equalTo(view.snp.centerX)
+            make.width.equalTo(200)
+            make.top.equalTo(signInLineButton.snp.bottom).offset(10)
+            make.height.equalTo(30)
+            make.bottom.equalTo(contentView.snp.bottom).offset(-10)
         }
  
     }
@@ -387,23 +385,23 @@ extension LoginViewController {
 //MARK: Login and Sign in logic
 extension LoginViewController {
     
-    @objc func googleAuthLogin() {
-        let googleConfig = GIDConfiguration(clientID: "453388259695-17omfcqm8fr926fcehguloregfpm1rni.apps.googleusercontent.com")
-        self.googleSignIn.signIn(with: googleConfig, presenting: self) { user, error in
-            if error == nil {
-                guard let user = user else {
-                    print("Uh oh. The user cancelled the Google login.")
-                    return
-                }
-                self.myUser.id = user.userID ?? ""
-                self.myUser.idToken = user.authentication.idToken ?? ""
-                self.myUser.firstName = user.profile?.givenName ?? ""
-                self.myUser.lastName = user.profile?.familyName ?? ""
-                self.myUser.email = user.profile?.email ?? ""
-                self.myUser.googleProfilePicURL = user.profile?.imageURL(withDimension: 150)?.absoluteString ?? ""
-            }
-        }
-    }
+//    @objc func googleAuthLogin() {
+//        let googleConfig = GIDConfiguration(clientID: "453388259695-17omfcqm8fr926fcehguloregfpm1rni.apps.googleusercontent.com")
+//        self.googleSignIn.signIn(with: googleConfig, presenting: self) { user, error in
+//            if error == nil {
+//                guard let user = user else {
+//                    print("Uh oh. The user cancelled the Google login.")
+//                    return
+//                }
+//                self.myUser.id = user.userID ?? ""
+//                self.myUser.idToken = user.authentication.idToken ?? ""
+//                self.myUser.firstName = user.profile?.givenName ?? ""
+//                self.myUser.lastName = user.profile?.familyName ?? ""
+//                self.myUser.email = user.profile?.email ?? ""
+//                self.myUser.googleProfilePicURL = user.profile?.imageURL(withDimension: 150)?.absoluteString ?? ""
+//            }
+//        }
+//    }
     
     func signInButtonTapped() {
         let controller = SignUpViewController()
@@ -417,6 +415,93 @@ extension LoginViewController {
         } else {
             self.present(loginAlert(), animated: true, completion: nil)
             return
+        }
+    }
+    
+    @objc func authButtonTapped() {
+
+        biometricIDAuthentification.canEvaluate { (canEvaluate, type, canEvaluateError) in
+            guard canEvaluate else {
+                let alertController = UIAlertController (title: "Setup your biometry", message: "Go to Settings?", preferredStyle: .alert)
+
+                let settingsAction = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
+
+                    guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+                        return
+                    }
+
+                    if UIApplication.shared.canOpenURL(settingsUrl) {
+                        UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                            print("Settings opened: \(success)") // Prints true
+                        })
+                    }
+                }
+                alertController.addAction(settingsAction)
+                let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+                alertController.addAction(cancelAction)
+                self.present(alertController, animated: true, completion: nil)
+                return
+            }
+            
+            DispatchQueue.main.async {
+                self.setupAuthButton(type: type)
+            }
+            
+            biometricIDAuthentification.evaluate { [weak self] (success, error) in
+                guard success else {
+                    self?.alert(
+                        title: "Error",
+                        message: error?.localizedDescription ?? "Face ID/Touch ID may not be configured",
+                        okActionTitle: "Confirm")
+                    return
+                }
+                self!.coordinator?.eventAction(event: .loginSuccess, iniciator: self!)
+            }
+        }
+    }
+    
+    func alert(
+        title: String,
+        message: String,
+        okActionTitle: String
+    ) {
+        let alertView = UIAlertController(
+            title: title,
+            message: message,
+            preferredStyle: .alert
+        )
+        let okAction = UIAlertAction(
+            title: okActionTitle,
+            style: .default
+        )
+        alertView.addAction(okAction)
+        present(
+            alertView,
+            animated: true
+        )
+    }
+    
+    func setupAuthButton(type: BiometricType) {
+        switch type {
+        case .faceID:
+            DispatchQueue.main.async {
+                self.useAuthButton.setTitle(" Use FaceID", for: .normal)
+                self.useAuthButton.setImage(UIImage(systemName: "faceid"), for: .normal)
+            }
+        case.touchID:
+            DispatchQueue.main.async {
+                self.useAuthButton.setTitle(" Use TouchID", for: .normal)
+                self.useAuthButton.setImage(UIImage(systemName: "touchid"), for: .normal)
+            }
+
+        case .none:
+            DispatchQueue.main.async {
+                self.useAuthButton.setTitle("", for: .normal)
+            }
+        case .unknown:
+            DispatchQueue.main.async {
+                self.useAuthButton.setTitle("Setup your biometry", for: .normal)
+            }
         }
     }
 }

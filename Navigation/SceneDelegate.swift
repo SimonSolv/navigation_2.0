@@ -1,6 +1,4 @@
 import UIKit
-import FirebaseAuth
-import FirebaseCore
 import RealmSwift
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate  {
@@ -10,7 +8,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate  {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions:
                      [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        FirebaseApp.configure()
         return true
     }
 
@@ -20,7 +17,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate  {
         
         let appConfiguration = AppConfiguration.allCases.randomElement()!.rawValue
         NetworkService.request(for: appConfiguration)
-        FirebaseApp.configure()
         window = UIWindow(windowScene: scene)
         window?.makeKeyAndVisible()
         let initialController = UITabBarController()
@@ -36,13 +32,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate  {
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {
-        
-        do {
-            try? FirebaseAuth.Auth.auth().signOut()
-            return
-        } catch {
-            print(error.localizedDescription)
-        }
         
     }
 }

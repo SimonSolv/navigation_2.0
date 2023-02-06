@@ -16,11 +16,11 @@
 		CE1687B42926ABD30088F724 /* Navigation.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE1687B22926ABD20088F724 /* Navigation.xcdatamodeld */; };
 		CE1687B62926AC4D0088F724 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1687B52926AC4D0088F724 /* CoreDataManager.swift */; };
 		CE1687B9292E8F030088F724 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1687B8292E8F030088F724 /* NetworkManager.swift */; };
-		CE1687BB292E8FFD0088F724 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1687BA292E8FFD0088F724 /* NetworkError.swift */; };
 		CE46997328F9C307006CCD35 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46997228F9C307006CCD35 /* NetworkService.swift */; };
 		CE524CFC26FCFC6C009C182B /* PhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE524CFB26FCFC6C009C182B /* PhotosTableViewCell.swift */; };
 		CE524CFF26FE47E3009C182B /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE524CFE26FE47E3009C182B /* PhotoCollectionViewCell.swift */; };
 		CE545B5228E357B90027C88A /* ModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE545B5128E357B90027C88A /* ModuleFactory.swift */; };
+		CE6D9A1029917073001A6FAC /* LocalAuthorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6D9A0F29917073001A6FAC /* LocalAuthorizationService.swift */; };
 		CE8485C6290EEC800008CE5D /* CheckerServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8485C5290EEC800008CE5D /* CheckerServiceProtocol.swift */; };
 		CE8D6E0D26A3069000A25380 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8D6E0C26A3069000A25380 /* AppDelegate.swift */; };
 		CE8D6E0F26A3069000A25380 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8D6E0E26A3069000A25380 /* SceneDelegate.swift */; };
@@ -66,11 +66,11 @@
 		CE1687B32926ABD30088F724 /* Navigation.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Navigation.xcdatamodel; sourceTree = "<group>"; };
 		CE1687B52926AC4D0088F724 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		CE1687B8292E8F030088F724 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		CE1687BA292E8FFD0088F724 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		CE46997228F9C307006CCD35 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		CE524CFB26FCFC6C009C182B /* PhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTableViewCell.swift; sourceTree = "<group>"; };
 		CE524CFE26FE47E3009C182B /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		CE545B5128E357B90027C88A /* ModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleFactory.swift; sourceTree = "<group>"; };
+		CE6D9A0F29917073001A6FAC /* LocalAuthorizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAuthorizationService.swift; sourceTree = "<group>"; };
 		CE8485C5290EEC800008CE5D /* CheckerServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckerServiceProtocol.swift; sourceTree = "<group>"; };
 		CE8D6E0926A3069000A25380 /* Navigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Navigation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE8D6E0C26A3069000A25380 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -137,7 +137,6 @@
 			isa = PBXGroup;
 			children = (
 				CE1687B8292E8F030088F724 /* NetworkManager.swift */,
-				CE1687BA292E8FFD0088F724 /* NetworkError.swift */,
 				CE46997228F9C307006CCD35 /* NetworkService.swift */,
 			);
 			path = Network;
@@ -282,6 +281,14 @@
 			path = Module;
 			sourceTree = "<group>";
 		};
+		CE6D9A11299172FB001A6FAC /* Authorization */ = {
+			isa = PBXGroup;
+			children = (
+				CE6D9A0F29917073001A6FAC /* LocalAuthorizationService.swift */,
+			);
+			path = Authorization;
+			sourceTree = "<group>";
+		};
 		CE8D6E0026A3069000A25380 = {
 			isa = PBXGroup;
 			children = (
@@ -306,6 +313,7 @@
 				CE8D6E1A26A3069900A25380 /* Info.plist */,
 				CE8D6E0C26A3069000A25380 /* AppDelegate.swift */,
 				CE8D6E0E26A3069000A25380 /* SceneDelegate.swift */,
+				CE6D9A11299172FB001A6FAC /* Authorization */,
 				CE1687BD292E929A0088F724 /* CoreData */,
 				CE1687BC292E92680088F724 /* Models */,
 				CE545B4D28E356640027C88A /* Protocols */,
@@ -474,6 +482,7 @@
 				CECEF9EA28E0C23600F87248 /* LoginModel.swift in Sources */,
 				CED2D0BD26E532F600ED0387 /* PostTableViewCell.swift in Sources */,
 				CECEF9E028E0C07D00F87248 /* Checker.swift in Sources */,
+				CE6D9A1029917073001A6FAC /* LocalAuthorizationService.swift in Sources */,
 				CE8D6E2926A30EFD00A25380 /* JokeViewController.swift in Sources */,
 				CE974C8E28F5EB1F00E343E5 /* SearchJokeViewController.swift in Sources */,
 				CE974C9028F5F0E000E343E5 /* JokeTableViewCell.swift in Sources */,
@@ -500,7 +509,6 @@
 				CED48DEA2909AE43004A563C /* SignUpViewController.swift in Sources */,
 				CECEF9D528E0BE7A00F87248 /* AppCoordinator.swift in Sources */,
 				CE8D6E6326A9B1AE00A25380 /* ProfileViewController.swift in Sources */,
-				CE1687BB292E8FFD0088F724 /* NetworkError.swift in Sources */,
 				CE524CFF26FE47E3009C182B /* PhotoCollectionViewCell.swift in Sources */,
 				CE46997328F9C307006CCD35 /* NetworkService.swift in Sources */,
 				CE8D6E0F26A3069000A25380 /* SceneDelegate.swift in Sources */,

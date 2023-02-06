@@ -1,6 +1,5 @@
 import Foundation
 import UIKit
-import FirebaseAuth
 import RealmSwift
 
 enum AlertError: String {
@@ -59,20 +58,20 @@ class LoginInspector: LoginViewControllerDelegate {
             
         case false:
             return
-            Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
-                guard let strongSelf = self else { return }
-                if error != nil {
-                    let alertVC = UIAlertController(title: "Warning:", message: error!.localizedDescription, preferredStyle: .alert )
-                    let okAction = UIAlertAction(title: "Ok", style: .default, handler: {(_: UIAlertAction!) in
-                    })
-                    alertVC.addAction(okAction)
-                    iniciator.present(alertVC, animated: true)
-                    return
-                }
-                if error?.localizedDescription == nil {
-                    iniciator.coordinator?.eventAction(event: .loginSuccess, iniciator: iniciator)
-                }
-            }
+//            Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
+//                guard let strongSelf = self else { return }
+//                if error != nil {
+//                    let alertVC = UIAlertController(title: "Warning:", message: error!.localizedDescription, preferredStyle: .alert )
+//                    let okAction = UIAlertAction(title: "Ok", style: .default, handler: {(_: UIAlertAction!) in
+//                    })
+//                    alertVC.addAction(okAction)
+//                    iniciator.present(alertVC, animated: true)
+//                    return
+//                }
+//                if error?.localizedDescription == nil {
+//                    iniciator.coordinator?.eventAction(event: .loginSuccess, iniciator: iniciator)
+//                }
+//            }
         }
     }
     
@@ -117,25 +116,26 @@ class LoginInspector: LoginViewControllerDelegate {
                 iniciator.present(alertVC, animated: true)
             }
         case false:
-            Auth.auth().createUser(withEmail: login, password: password) { authResult, error in
-                if error != nil {
-                    let alertVC = UIAlertController(title: "Warning:", message: error!.localizedDescription, preferredStyle: .alert )
-                    let okAction = UIAlertAction(title: "Ok", style: .default, handler: {(_: UIAlertAction!) in
-                    })
-                    alertVC.addAction(okAction)
-                    iniciator.present(alertVC, animated: true)
-                    return
-                } else {
-                    print(authResult?.user.refreshToken)
-                    print(authResult?.user.email)
-                }
-                let alertVC = UIAlertController(title: "Success!", message: "You have been signed in", preferredStyle: .alert )
-                let okAction = UIAlertAction(title: "Ok", style: .default, handler: {(_: UIAlertAction!) in
-                    iniciator.dismiss(animated: true)
-                })
-                alertVC.addAction(okAction)
-                iniciator.present(alertVC, animated: true)
-            }
+            return
+//            Auth.auth().createUser(withEmail: login, password: password) { authResult, error in
+//                if error != nil {
+//                    let alertVC = UIAlertController(title: "Warning:", message: error!.localizedDescription, preferredStyle: .alert )
+//                    let okAction = UIAlertAction(title: "Ok", style: .default, handler: {(_: UIAlertAction!) in
+//                    })
+//                    alertVC.addAction(okAction)
+//                    iniciator.present(alertVC, animated: true)
+//                    return
+//                } else {
+//                    print(authResult?.user.refreshToken)
+//                    print(authResult?.user.email)
+//                }
+//                let alertVC = UIAlertController(title: "Success!", message: "You have been signed in", preferredStyle: .alert )
+//                let okAction = UIAlertAction(title: "Ok", style: .default, handler: {(_: UIAlertAction!) in
+//                    iniciator.dismiss(animated: true)
+//                })
+//                alertVC.addAction(okAction)
+//                iniciator.present(alertVC, animated: true)
+//            }
         }
     }
 }

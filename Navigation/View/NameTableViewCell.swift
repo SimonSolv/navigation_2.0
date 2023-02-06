@@ -1,10 +1,3 @@
-//
-//  NameTableViewCell.swift
-//  Navigation
-//
-//  Created by Simon Pegg on 20.10.2022.
-//
-
 import UIKit
 
 class NameTableViewCell: UITableViewCell {

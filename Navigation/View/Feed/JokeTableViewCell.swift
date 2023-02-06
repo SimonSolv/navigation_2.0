@@ -1,10 +1,3 @@
-//
-//  JokeTableViewCell.swift
-//  Navigation
-//
-//  Created by Simon Pegg on 11.10.2022.
-//
-
 import UIKit
 
 class JokeTableViewCell: UITableViewCell {

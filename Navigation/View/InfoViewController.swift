@@ -1,5 +1,6 @@
 import UIKit
 import SnapKit
+
 class InfoViewController: UIViewController {
     
     var planet: Planet?
