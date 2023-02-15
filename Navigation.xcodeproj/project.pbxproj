@@ -21,6 +21,7 @@
 		CE524CFF26FE47E3009C182B /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE524CFE26FE47E3009C182B /* PhotoCollectionViewCell.swift */; };
 		CE545B5228E357B90027C88A /* ModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE545B5128E357B90027C88A /* ModuleFactory.swift */; };
 		CE6D9A1029917073001A6FAC /* LocalAuthorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6D9A0F29917073001A6FAC /* LocalAuthorizationService.swift */; };
+		CE73FFCE299D3FA2002F76DE /* LocalNotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE73FFCD299D3FA2002F76DE /* LocalNotificationService.swift */; };
 		CE8485C6290EEC800008CE5D /* CheckerServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8485C5290EEC800008CE5D /* CheckerServiceProtocol.swift */; };
 		CE8D6E0D26A3069000A25380 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8D6E0C26A3069000A25380 /* AppDelegate.swift */; };
 		CE8D6E0F26A3069000A25380 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8D6E0E26A3069000A25380 /* SceneDelegate.swift */; };
@@ -71,6 +72,7 @@
 		CE524CFE26FE47E3009C182B /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		CE545B5128E357B90027C88A /* ModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleFactory.swift; sourceTree = "<group>"; };
 		CE6D9A0F29917073001A6FAC /* LocalAuthorizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAuthorizationService.swift; sourceTree = "<group>"; };
+		CE73FFCD299D3FA2002F76DE /* LocalNotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationService.swift; sourceTree = "<group>"; };
 		CE8485C5290EEC800008CE5D /* CheckerServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckerServiceProtocol.swift; sourceTree = "<group>"; };
 		CE8D6E0926A3069000A25380 /* Navigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Navigation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE8D6E0C26A3069000A25380 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -313,6 +315,7 @@
 				CE8D6E1A26A3069900A25380 /* Info.plist */,
 				CE8D6E0C26A3069000A25380 /* AppDelegate.swift */,
 				CE8D6E0E26A3069000A25380 /* SceneDelegate.swift */,
+				CE73FFCD299D3FA2002F76DE /* LocalNotificationService.swift */,
 				CE6D9A11299172FB001A6FAC /* Authorization */,
 				CE1687BD292E929A0088F724 /* CoreData */,
 				CE1687BC292E92680088F724 /* Models */,
@@ -497,6 +500,7 @@
 				CE8D6E2326A309F900A25380 /* FeedViewController.swift in Sources */,
 				CE8485C6290EEC800008CE5D /* CheckerServiceProtocol.swift in Sources */,
 				CECEF9E328E0C07D00F87248 /* LoginViewController.swift in Sources */,
+				CE73FFCE299D3FA2002F76DE /* LocalNotificationService.swift in Sources */,
 				CECEF9E828E0C08900F87248 /* GalleryViewController.swift in Sources */,
 				CECEF9CF28E0BE0E00F87248 /* ProfileModel.swift in Sources */,
 				CED2D0C426E9212700ED0387 /* ProfileTableHeaderView.swift in Sources */,

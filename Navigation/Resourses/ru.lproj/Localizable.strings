@@ -79,3 +79,10 @@
 "Password" = "Пароль";
 "Incorrect login or password" = "Неправильный логин или пароль";
 "Generate password" = "GСгенерировать пароль";
+
+//Notifications
+"Notification" = "Уведомление";
+"See latest updates!" = "Посмотрите последние обновления!";
+"Set notification" = "Установить уведомление";
+"Show" = "Показать";
+"Deny" = "Отклонить";

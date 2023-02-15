@@ -79,6 +79,12 @@
 "Incorrect login or password" = "Incorrect login or password";
 "Generate password" = "Generate password";
 
+//Notifications
+"Notification" = "Notification";
+"See latest updates!" = "See latest updates!";
+"Set notification" = "Set notification";
+"Show" = "Show";
+"Deny" = "Deny";
 
 
 

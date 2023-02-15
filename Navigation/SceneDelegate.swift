@@ -1,13 +1,15 @@
 import UIKit
 import RealmSwift
+import UserNotifications
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate  {
 
     var window: UIWindow?
-
+    let notificationService = LocalNotificationService()
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions:
                      [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+
         return true
     }
 
@@ -29,7 +31,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate  {
         let users = realm.objects(Credentials.self)
         isAuth = users.contains { $0.isLoggedIn }
         window?.rootViewController = coordinator.start(authorised: isAuth)!
+        notificationService.registeForLatestUpdatesIfPossible()
     }
+    
+    
     
     func sceneDidDisconnect(_ scene: UIScene) {
         

@@ -42,6 +42,12 @@ class FeedViewController: UIViewController, Coordinated {
         btn.setStyle(style: .login)
         return btn
     }()
+    
+    lazy var notificationButton: CustomButton = {
+        let btn = CustomButton(title: "Set notification"~, titleColor: .white, onTap: setNotificationTapped)
+        btn.setStyle(style: .login)
+        return btn
+    }()
 
     func displayGreenLabel() {
         self.view.addSubview(greenLabel)
@@ -103,6 +109,7 @@ class FeedViewController: UIViewController, Coordinated {
         view.addSubview(buttonsView)
         view.addSubview(firstTextfield)
         view.addSubview(checkButton)
+        view.addSubview(notificationButton)
     }
 
     func setupConstraints() {
@@ -127,6 +134,13 @@ class FeedViewController: UIViewController, Coordinated {
             make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).offset(-20)
             make.height.equalTo(50)
         }
+        
+        notificationButton.snp.makeConstraints { (make) in
+            make.top.equalTo(checkButton.snp.bottom).offset(15)
+            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(20)
+            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).offset(-20)
+            make.height.equalTo(50)
+        }
     }
 
     @objc func firstTextfieldChanged() {
@@ -137,6 +151,11 @@ class FeedViewController: UIViewController, Coordinated {
         let controller = InfoViewController()
         navigationController?.pushViewController(controller, animated: true)
 
+    }
+    
+    func setNotificationTapped() {
+        let service = LocalNotificationService()
+        service.registerNotificationTimeInterval(title: "Notification"~, body: "See latest updates!"~, interval: 5)
     }
     
     func openRandomJokes() {
